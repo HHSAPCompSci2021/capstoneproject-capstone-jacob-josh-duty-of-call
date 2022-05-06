@@ -5,5 +5,7 @@ public class Hider extends Sprite {
 		
 	}
 	
-
+	private void move() {
+		
+	}
 }

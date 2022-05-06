@@ -5,5 +5,7 @@ public class Seeker extends Sprite {
 		
 	}
 	
-	
+	private void move() {
+		
+	}
 }
