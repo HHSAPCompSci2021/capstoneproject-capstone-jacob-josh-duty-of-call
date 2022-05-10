@@ -9,7 +9,7 @@ package gameplay;
 
 /**
  * 
- * creates a hider that extends a sprite
+ * Instantiates a hider that inherits the qualities of a Sprite
  *
  */
 public class Hider extends Sprite {
@@ -18,8 +18,7 @@ public class Hider extends Sprite {
 	}
 
 /**
- * overrides the move method and is how the hider moves
- * test
+ * Overrides the move method and describes how the hider moves
  * 
  */
 	private void move() {
