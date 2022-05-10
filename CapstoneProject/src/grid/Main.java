@@ -8,8 +8,16 @@ import javax.swing.JFrame;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 
+/**
+ * Main represents the runnable class 
+ * @version 5/10/22
+ * 
+ * @author Joshua Lee & Jacob Tang
+ *
+ */
 public class Main {
 
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DrawingSurface drawing = new DrawingSurface();
