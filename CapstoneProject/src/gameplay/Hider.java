@@ -19,6 +19,7 @@ public class Hider extends Sprite {
 
 /**
  * overrides the move method and is how the hider moves
+ * test
  * 
  */
 	private void move() {
