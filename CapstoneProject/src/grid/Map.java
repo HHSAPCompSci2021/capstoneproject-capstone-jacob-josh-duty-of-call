@@ -21,5 +21,9 @@ public class Map {
 		this.DRAWING_HEIGHT = height;
 		this.DRAWING_WIDTH = width;
 	}
+	
+	public void draw() {
+		
+	}
 
 }
