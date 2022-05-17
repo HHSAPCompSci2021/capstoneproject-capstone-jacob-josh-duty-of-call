@@ -48,8 +48,10 @@ public class MenuScreen extends Screen{
 	
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
-		if (button.contains(p))
+		if (playButton.contains(p))
 			surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
+		if (helpButton.contains(p))
+			System.out.println("Use wasd to move around, use space for superpower, and try to get away from the seeker");
 	}
 	
 }
