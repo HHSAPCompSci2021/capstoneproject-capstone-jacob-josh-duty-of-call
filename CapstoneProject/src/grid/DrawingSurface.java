@@ -21,35 +21,35 @@ public class DrawingSurface extends PApplet {
 	private Hider hider;
 	private Seeker seeker;
 	
-	/*
+	/**
 	 * creates a surface to be drawn on and extends PApplet
 	 */
 	public DrawingSurface() {
 		
 	}
 	
-	/*
+	/**
 	 * set up function that sets up the drawingsurface
 	 */
 	public void setup() {
 		
 	}
 	
-	/*
+	/**
 	 * draws the program when it is executed
 	 */
 	public void draw() {
 		
 	}
 	
-	/*
+	/**
 	 * executes certain buttons are pressed
 	 */
 	public void keyPressed() {
 		
 	}
 	
-	/*
+	/**
 	 * executes when mouse is pressed
 	 */
 	public void mousePressed() {
