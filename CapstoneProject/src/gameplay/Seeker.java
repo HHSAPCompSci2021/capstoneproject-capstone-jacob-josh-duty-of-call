@@ -7,12 +7,15 @@
  */
 package gameplay;
 
+import java.awt.List;
+
 import processing.core.PImage;
 
 public class Seeker extends Sprite {
 	
 	public static final int SEEKER_WIDTH = 30;
 	public static final int SEEKER_HEIGHT = 30;
+	private int tagged;
 
 	
 /*
@@ -27,7 +30,7 @@ public class Seeker extends Sprite {
 	 */
 	public void move(int dirX, int dirY) {
 		if (dirX == 1) {
-			x+=2;
+			seeker.getX+=2;
 		}
 		if (dirX == -1) {
 			x-=2;
@@ -37,6 +40,14 @@ public class Seeker extends Sprite {
 		}
 		if (dirY == -1) {
 			y-=2;
+		}
+	}
+	
+	public void tagged(List<Sprite> hiders) {
+		for (Seeker s: hiders) {
+			if(super.intersects(s)) {
+				tagged +=1;
+			}
 		}
 	}
 }
