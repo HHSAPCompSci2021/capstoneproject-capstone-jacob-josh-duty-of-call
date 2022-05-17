@@ -6,6 +6,7 @@ import gameplay.Hider;
 import gameplay.Seeker;
 import gameplay.Sprite;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  * Drawing Surface represents the surface that the drawing will be on
@@ -21,11 +22,24 @@ public class DrawingSurface extends PApplet {
 	private Hider hider;
 	private Seeker seeker;
 	
+	private boolean play;
+	private boolean start;
+	private boolean gameOver;
+	
+//	private PImage startScreen;
+//	private PImage endScreen;
+	private Map map;
+	
+	
+	
 	/**
 	 * creates a surface to be drawn on and extends PApplet
 	 */
 	public DrawingSurface() {
-		
+		play = false;
+		start = true;
+		gameOver = false;
+
 	}
 	
 	/**
@@ -39,7 +53,18 @@ public class DrawingSurface extends PApplet {
 	 * draws the program when it is executed
 	 */
 	public void draw() {
-		
+		if(hider.getLives()==0) {
+			gameOver = true;
+			textSize(50);
+			text("GAME OVER. PLEASE WAIT UNTIL NEXT ROUND", 400, 300);
+			//startScreen.get();
+		}
+		if(start) {
+			map.draw();
+		}
+		if(play) {
+			
+		}
 	}
 	
 	/**

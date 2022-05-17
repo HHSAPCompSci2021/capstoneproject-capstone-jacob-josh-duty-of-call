@@ -28,12 +28,14 @@ public class Hider extends Sprite {
 	private boolean taserStun;
 	private boolean invisibility;
 	
+	private int lives;
+	
 	private double xVel;
 	private double yVel;
 	
 	public Hider(PImage img, int x, int y) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
-		
+		lives = 1;
 		
 	}
 
@@ -102,6 +104,11 @@ public class Hider extends Sprite {
 			
 		}
 		
-		
 	}
+	
+	public int getLives() {
+		return lives;
+	}
+
+	
 }
