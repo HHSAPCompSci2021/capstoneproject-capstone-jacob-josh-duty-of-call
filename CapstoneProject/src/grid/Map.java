@@ -8,18 +8,22 @@
 
 package grid;
 
+import java.awt.Rectangle;
+
 /**
  * 
  * creates a map on drawing surface
  *
  */
-public class Map {
+public class Map extends Screen {
+	
+	private DrawingSurface surface;
 
-	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
+	//public final int DRAWING_WIDTH, DRAWING_HEIGHT;
 
-	public Map(int width, int height) {
-		this.DRAWING_HEIGHT = height;
-		this.DRAWING_WIDTH = width;
+	public Map(DrawingSurface surface) {
+		super(800, 600);
+		this.surface = surface;
 	}
 	
 	public void draw() {

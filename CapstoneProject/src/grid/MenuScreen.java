@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-import screens.ScreenSwitcher;
+//import screens.ScreenSwitcher;
 
 /**
  * Menu Screen represents the loading screen/where you choose to play

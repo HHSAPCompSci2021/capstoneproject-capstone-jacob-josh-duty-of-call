@@ -28,10 +28,11 @@ public class Hider extends Sprite {
 	private boolean taserStun;
 	private boolean invisibility;
 	
-	private int lives;
+	private int lives, score;
 	
-	private double xVel;
-	private double yVel;
+	private double xVel, yVel;
+	
+	private int direction;
 	
 	public Hider(PImage img, int x, int y) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
@@ -106,8 +107,35 @@ public class Hider extends Sprite {
 		
 	}
 	
+	public void draw() {
+		
+	}
+	
 	public int getLives() {
 		return lives;
+	}
+	
+	public void loseLife() {
+		lives--;
+	}
+	
+	public void setScore(int score){
+		this.score = score;
+	}
+	public int getScore() {
+		return score;
+	}
+	public double getX() {
+		return x;
+	}
+	public double getY() {
+		return y;
+	}
+	public void setDirection(int direction) {
+		this.direction = direction;
+	}
+	public int getDirection() {
+		return direction;
 	}
 
 	
