@@ -1,7 +1,10 @@
 package grid;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.awt.Rectangle;
+
+import screens.ScreenSwitcher;
 
 /**
  * Menu Screen represents the loading screen/where you choose to play
@@ -11,7 +14,7 @@ import java.awt.Rectangle;
  *
  */
 
-public class MenuScreen {
+public class MenuScreen extends Screen{
 	private DrawingSurface surface;
 	private Rectangle helpButton;
 	private Rectangle playButton;
@@ -41,6 +44,12 @@ public class MenuScreen {
 		surface.text(str2, helpButton.x+helpButton.width/2-w/2, helpButton.y+helpButton.height/2);
 		
 		
+	}
+	
+	public void mousePressed() {
+		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
+		if (button.contains(p))
+			surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
 	}
 	
 }
