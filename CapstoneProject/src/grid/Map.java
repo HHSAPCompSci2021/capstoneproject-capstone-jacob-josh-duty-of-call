@@ -13,8 +13,13 @@ package grid;
  * creates a map on drawing surface
  *
  */
-public class Map extends DrawingSurface {
-	public Map() {
-		
+public class Map {
+
+	public final int DRAWING_WIDTH, DRAWING_HEIGHT;
+
+	public Map(int width, int height) {
+		this.DRAWING_HEIGHT = height;
+		this.DRAWING_WIDTH = width;
 	}
+
 }
