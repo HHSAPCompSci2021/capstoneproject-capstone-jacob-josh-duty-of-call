@@ -34,10 +34,10 @@ public class DrawingSurface extends PApplet {
 //	private PImage endScreen;
 //	private Map map;
 	
-	private Screen activeScreen;
-	private ArrayList<Screen> screens;
+//	private Screen activeScreen;
+//	private ArrayList<Screen> screens;
 	
-	private float ratioX, ratioY;
+//	private float ratioX, ratioY;
 	
 	
 	
@@ -45,19 +45,10 @@ public class DrawingSurface extends PApplet {
 	 * creates a surface to be drawn on and extends PApplet
 	 */
 	public DrawingSurface() {
-		play = false;
 		start = true;
+		play = false;
 		gameOver = false;
 		
-		screens = new ArrayList<Screen>();
-		
-		MenuScreen screen1 = new MenuScreen(this);
-		screens.add(screen1);
-		
-		Map screen2 = new Map(this);
-		screens.add(screen2);
-		
-		activeScreen = screens.get(0);
 
 	}
 	
@@ -65,66 +56,27 @@ public class DrawingSurface extends PApplet {
 	 * set up function that sets up the drawingsurface
 	 */
 	public void setup() {
-		for (Screen s : screens)
-			s.setup();
+		
+		
 	}
 	
 	/**
 	 * draws the program when it is executed
 	 */
 	public void draw() {
-//		if(hider.getLives()==0) {
-//			gameOver = true;
-//			textSize(50);
-//			text("GAME OVER. PLEASE WAIT UNTIL NEXT ROUND", 400, 300);
-//			
-//		}
-//		if(start) {
-//			screens.get(0).draw();
-//		}
-//		if(play) {
-//			screens.get(1).draw();
-//		}
-		
+		if(hider.isTagged(seeker)) {
+			gameOver=true;
+		}
+		if(start) {
+			
+		}
+		if(play) {
+			
+		}
+		if(gameOver) {
+			
+		}
 
-		ratioX = (float)width/activeScreen.DRAWING_WIDTH;
-		ratioY = (float)height/activeScreen.DRAWING_HEIGHT;
-
-		push();
-		
-		scale(ratioX, ratioY);
-		
-		activeScreen.draw();
-		
-		pop();
-	}
-	
-	public void mousePressed() {
-		activeScreen.mousePressed();
-	}
-	
-	public void mouseMoved() {
-		activeScreen.mouseMoved();
-	}
-	
-	public void mouseDragged() {
-		activeScreen.mouseDragged();
-	}
-	
-	public void mouseReleased() {
-		activeScreen.mouseReleased();
-	}
-	
-	public Point assumedCoordinatesToActual(Point assumed) {
-		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-	}
-
-	public Point actualCoordinatesToAssumed(Point actual) {
-		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
-	}
-
-	public void switchScreen(int i) {
-		activeScreen = screens.get(i);
 	}
 	
 }

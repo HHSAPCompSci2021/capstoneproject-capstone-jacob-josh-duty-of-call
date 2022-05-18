@@ -31,16 +31,16 @@ public class Seeker extends Sprite {
 	 */
 	public void move(int dirX, int dirY) {
 		if (dirX == 1) {
-			x+=2;
+			x+=1.5;
 		}
 		if (dirX == -1) {
-			x-=2;
+			x-=1.5;
 		}
 		if (dirY == 1) {
-			y+=2;
+			y+=1.5;
 		}
 		if (dirY == -1) {
-			y-=2;
+			y-=1.5;
 		}
 	}
 	

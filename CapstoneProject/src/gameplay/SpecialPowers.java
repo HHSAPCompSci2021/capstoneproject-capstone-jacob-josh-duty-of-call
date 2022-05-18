@@ -11,6 +11,10 @@ public class SpecialPowers {
 	/*
 	 * creates special powers that hiders can access
 	 */
+	
+	private Seeker seeker;
+	private Hider hider;
+	
 	public SpecialPowers() {
 		
 	}
@@ -18,28 +22,28 @@ public class SpecialPowers {
 	/*
 	 * stuns seeker
 	 */
-	private void taserStun() {
-		
+	public void taserStun() {
+		seeker.move(0, 0);
 	}
 	
 	/*
 	 * makes hider "invisible"
 	 */
-	private void invisibility() {
+	public void invisibility() {
 		
 	}
 	
 	/*
 	 * gives seeker faster movement speed
 	 */
-	private void speedBoost() {
-		
+	public void speedBoost() {
+		hider.accelerate(2, 2);
 	}
 	
 	/*
 	 * allows for hider to pass through walls
 	 */
-	private void wallPhase() {
+	public void wallPhase() {
 		
 	}
 }

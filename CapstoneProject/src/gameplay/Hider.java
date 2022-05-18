@@ -21,9 +21,9 @@ public class Hider extends Sprite {
 	public static final int HIDER_WIDTH = 30;
 	public static final int HIDER_HEIGHT = 30;
 	
-	private ArrayList<String> powers;
+	private ArrayList<SpecialPowers> powers;
 	
-	private boolean speedBoost;
+	private SpecialPowers speedBoost;
 	private boolean wallPhase;
 	private boolean taserStun;
 	private boolean invisibility;
@@ -46,57 +46,78 @@ public class Hider extends Sprite {
  */
 	public void move(int dirX, int dirY) {
 		if (dirX == 1) {
-			x+=1.5;
+			x+=1;
 		}
 		if (dirX == -1) {
-			x-=1.5;
+			x-=1;
 		}
 		if (dirY == 1) {
-			y+=1.5;
+			y+=1;
 		}
 		if (dirY == -1) {
-			y-=1.5;
+			y-=1;
 		}
 	}
 	
-	public void usePowers() {
-		powers.add(1, "speedboost");
-		powers.add(2, "taserstun");
-		powers.add(3, "wallphase");
-		powers.add(4, "invisibility");
+	public void accelerate(int dirX, int dirY) {
+		if (dirX == 1) {
+			x+=2;
+		}
+		if (dirX == -1) {
+			x-=2;
+		}
+		if (dirY == 1) {
+			y+=2;
+		}
+		if (dirY == -1) {
+			y-=2;
+		}
+	}
+	
+	public void assignPowers() {
 		
 		int i = (int)(Math.random()*powers.size());
-		if(powers.get(i) == "speedboost") {
-			speedBoost = true;
-			powers.remove(i);
-				
-		}
-		if(powers.get(i) == "taserstun") {
-			taserStun = true;
-			powers.remove(i);
+		
+		if(powers.get(i)==speedBoost) {
 			
 		}
-		if(powers.get(i) == "wallphase") {
-			wallPhase = true;
-			powers.remove(i);
-		}
-		if(powers.get(i) == "invisibility") {
-			invisibility = true;
-			powers.remove(i);
-		}
+//		powers.add(1, speedboost);
+//		powers.add(2, taserstun);
+//		powers.add(3, wallphase);
+//		powers.add(4, invisibility);
+//		
+//		int i = (int)(Math.random()*powers.size());
+//		if(powers.get(i) == "speedboost") {
+//			speedBoost = true;
+//			powers.remove(i);
+//				
+//		}
+//		if(powers.get(i) == "taserstun") {
+//			taserStun = true;
+//			powers.remove(i);
+//			
+//		}
+//		if(powers.get(i) == "wallphase") {
+//			wallPhase = true;
+//			powers.remove(i);
+//		}
+//		if(powers.get(i) == "invisibility") {
+//			invisibility = true;
+//			powers.remove(i);
+//		}
 		
 	}
 	
 	public void act() {
-		if(speedBoost) {
-			xVel+=2;
-			yVel+=2;
-			
-			x+=xVel;
-			y+=yVel;
-		}
+//		if(speedBoost) {
+//			xVel+=2;
+//			yVel+=2;
+//			
+//			x+=xVel;
+//			y+=yVel;
+//		}
 		if(taserStun) {
-			
+			//hider.taserStun();
 		}
 		if(wallPhase) {
 			
@@ -111,11 +132,12 @@ public class Hider extends Sprite {
 		
 	}
 	
-	public void tagged(Seeker other) {
+	public boolean isTagged(Seeker other) {
 		if(this.intersects(other)) {
 			this.loseLife();
-			
+			return true;
 		}
+		return false;
 	}
 	
 	public int getLives() {
