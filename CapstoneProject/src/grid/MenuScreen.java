@@ -25,7 +25,7 @@ public class MenuScreen extends Screen{
 		super(800,600);
 		this.surface = surface;
 		
-		helpButton = new Rectangle(800/2-100,600/2+50,200,100);
+		//helpButton = new Rectangle(800/2-100,600/2+50,200,100);
 		playButton = new Rectangle(800/2-100,600/2-50,200,100);
 	}
 	
