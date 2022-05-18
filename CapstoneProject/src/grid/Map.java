@@ -9,6 +9,7 @@
 package grid;
 
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 /**
  * 
@@ -17,17 +18,28 @@ import java.awt.Rectangle;
  */
 public class Map extends Screen {
 	
-	private DrawingSurface surface;
+	private boolean[][] grid;
+	public final int ROWS = 50;
+	public final int COLS = 50;
+	
 
-	//public final int DRAWING_WIDTH, DRAWING_HEIGHT;
-
-	public Map(DrawingSurface surface) {
-		super(800, 600);
-		this.surface = surface;
+	public Map() {
+		grid = new boolean[ROWS][COLS];
 	}
 	
 	public void draw() {
 		
 	}
+	
+	public boolean isValidLocation() {
+		return false;
+	}
+	
+	public double getHeight() {
+		return ;
+	}
 
+	public double getWidth() {
+		return;
+	}
 }
