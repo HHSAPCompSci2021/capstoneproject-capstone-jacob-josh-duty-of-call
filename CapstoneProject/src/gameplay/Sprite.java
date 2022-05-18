@@ -17,17 +17,10 @@ public class Sprite extends Rectangle2D.Double {
 	/*
 	 * creates a character that is replicated by the hiders and seekers
 	 */
-	private double x;
-	private double y;
-	private double width;
-	private double height;
 	private PImage image;
 	
 	public Sprite(int x, int y, int w, int h) {
-		this.x = x;
-		this.y = y;
-		this.width = w;
-		this.height = h;
+		this(null, x, y, w, h);
 	}
 	public Sprite(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
@@ -52,19 +45,17 @@ public class Sprite extends Rectangle2D.Double {
 			g.rect((float)x,(float)y,(float)width,(float)height);
 		}
 	}
-	public double getX(double xCoord) {
-		xCoord = x;
-		return x;
-	}
-	public void setX(double xCoord) {
-		xCoord = x;
-	}
-	
-	public double getT(double yCoord) {
-		yCoord = x;
-		return x;
-	}
-	public void setT(double yCoord) {
-		yCoord = x;
-	}
+//	public double getX() {
+//		return x;
+//	}
+//	public void setX(double xCoord) {
+//		xCoord = x;
+//	}
+//	
+//	public double getY() {
+//		return y;
+//	}
+//	public void setY(double yCoord) {
+//		yCoord = y;
+//	}
 }

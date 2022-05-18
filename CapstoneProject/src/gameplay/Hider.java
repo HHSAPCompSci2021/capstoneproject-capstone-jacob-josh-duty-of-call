@@ -111,6 +111,13 @@ public class Hider extends Sprite {
 		
 	}
 	
+	public void tagged(Seeker other) {
+		if(this.intersects(other)) {
+			this.loseLife();
+			
+		}
+	}
+	
 	public int getLives() {
 		return lives;
 	}
@@ -124,6 +131,12 @@ public class Hider extends Sprite {
 	}
 	public int getScore() {
 		return score;
+	}
+	public void setX(double x) {
+		this.x = x;
+	}
+	public void setY(double y) {
+		this.y = y;
 	}
 	public double getX() {
 		return x;
