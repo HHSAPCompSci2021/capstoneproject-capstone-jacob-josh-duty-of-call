@@ -16,11 +16,12 @@ import java.util.ArrayList;
  * creates a map on drawing surface
  *
  */
-public class Map extends Screen {
+public class Map {
 	
 	private boolean[][] grid;
 	public final int ROWS = 50;
 	public final int COLS = 50;
+	private int x,y;
 	
 
 	public Map() {
@@ -36,10 +37,10 @@ public class Map extends Screen {
 	}
 	
 	public double getHeight() {
-		return ;
+		return x;
 	}
 
 	public double getWidth() {
-		return;
+		return y;
 	}
 }
