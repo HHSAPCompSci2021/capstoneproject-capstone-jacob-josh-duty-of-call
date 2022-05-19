@@ -22,6 +22,7 @@ public class Hider extends Sprite {
 	public static final int HIDER_HEIGHT = 30;
 	
 	private ArrayList<SpecialPowers> powers;
+	private String power;
 	
 	private SpecialPowers speedBoost;
 	private boolean wallPhase;
@@ -56,6 +57,12 @@ public class Hider extends Sprite {
 		}
 		if (dirY == -1) {
 			y-=1;
+		}
+		if(dirX == 0) {
+			x+=0;
+		}
+		if(dirY == 0){
+			y+=0;
 		}
 	}
 	
@@ -108,7 +115,11 @@ public class Hider extends Sprite {
 		
 	}
 	
-	public void act() {
+	public String getPowers() {
+		return power;
+	}
+	
+	public boolean usePower() {
 //		if(speedBoost) {
 //			xVel+=2;
 //			yVel+=2;
@@ -118,14 +129,15 @@ public class Hider extends Sprite {
 //		}
 		if(taserStun) {
 			//hider.taserStun();
+			return true;
 		}
 		if(wallPhase) {
-			
+			return true;
 		}
 		if(invisibility) {
-			
+			return true;
 		}
-		
+		return false;
 	}
 	
 	public void draw() {

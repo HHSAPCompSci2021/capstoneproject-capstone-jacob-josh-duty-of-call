@@ -1,7 +1,7 @@
 package grid;
 
 import java.awt.Point;
-
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import gameplay.Hider;
@@ -66,9 +66,7 @@ public class DrawingSurface extends PApplet {
 	public void draw() {
 		imageMode(CENTER);
 		
-//		if(hider.isTagged(seeker)) {
-//			gameOver=true;
-//		}
+		
 		if(start) {
 			//sets title screen color and uploads title
 			background(255);
@@ -80,12 +78,42 @@ public class DrawingSurface extends PApplet {
 			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
 		}
 		if(play) {
+			background(255);
 			
+			if(map != null) {
+				map.draw(this, 0, 0, width/3, height);
+			}
+			
+			textSize(10);
+			textAlign(LEFT);
+			text("POINTS: " + hider.getScore(), width/40, height/28);
+			
+			textAlign(RIGHT);
+			text("SPECIAL POWER: "+ hider.getPowers(), width - width/40, height/28);
+			
+			
+			if(hider.isTagged(seeker)) {
+				hider.loseLife();
+				gameOver=true;
+			}
 		}
 		if(gameOver) {
-			
+			start = true;
+			play = false;
 		}
 
 	}
-	
+	public void keyPressed() {
+		if (keyCode == KeyEvent.VK_SPACE) {
+			hider.usePower();
+		}else if (keyCode == KeyEvent.VK_DOWN) {
+			hider.move(0, 1);
+		} else if (keyCode == KeyEvent.VK_UP) {
+			hider.move(0, -1);
+		} else if (keyCode == KeyEvent.VK_LEFT) {
+			hider.move(-1,0);
+		} else if (keyCode == KeyEvent.VK_RIGHT) {
+			hider.move(1, 0);
+		}
+	}	
 }
