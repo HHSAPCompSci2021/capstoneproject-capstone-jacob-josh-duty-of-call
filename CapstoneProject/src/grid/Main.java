@@ -12,7 +12,7 @@ import processing.core.PApplet;
  * Main represents the runnable class 
  * @version 5/10/22
  * 
- * @author Joshua Lee & Jacob Tang
+ * @author Jacob Tang
  *
  */
 public class Main {

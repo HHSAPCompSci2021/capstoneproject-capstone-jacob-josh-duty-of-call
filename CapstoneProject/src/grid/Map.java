@@ -1,5 +1,6 @@
 /**
  * Map represents the grid that the game will be played on
+
  * @version 5/10/22
  * 
  * @author Joshua Lee & Jacob Tang
@@ -32,6 +33,7 @@ public class Map {
 	
 	public void draw(PApplet drawer, float x, float y, float height, float width ) {
 		drawer.fill(0);
+		
 		
 		
 	}

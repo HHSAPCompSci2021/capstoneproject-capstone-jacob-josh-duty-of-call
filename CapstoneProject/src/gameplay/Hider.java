@@ -1,8 +1,9 @@
 /**
  * Hider represents hider in the game
+
  * @version 5/10/22
  * 
- * @author Joshua Lee & Jacob Tang
+ * @author Jacob Tang
  *
  */
 package gameplay;

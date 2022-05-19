@@ -1,8 +1,9 @@
 /**
  * Seeker represents seeker in the game
+
  * @version 5/10/22
  * 
- * @author Joshua Lee & Jacob Tang
+ * @author Joshua Lee
  *
  */
 package gameplay;

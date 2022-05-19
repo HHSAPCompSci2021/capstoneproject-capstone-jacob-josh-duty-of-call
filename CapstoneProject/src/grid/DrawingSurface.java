@@ -32,11 +32,13 @@ public class DrawingSurface extends PApplet {
 	private boolean start;
 	private boolean gameOver;
 	private boolean help;
+	private boolean back;
 	
 	private PImage title;
 	private PImage playButton;
 	private PImage helpButton;
 	private PImage howToPlay;
+	private PImage backButton;
 	
 	private Map map;
 
@@ -50,6 +52,8 @@ public class DrawingSurface extends PApplet {
 		start = true;
 		play = false;
 		gameOver = false;
+		help = false;
+		back = false;
 		hiders = new ArrayList<Hider>();
 		//map = new Map(map.txt);
 
@@ -65,6 +69,7 @@ public class DrawingSurface extends PApplet {
 		playButton = loadImage("img/playbutton.png");
 		helpButton = loadImage("img/helpbutton.png");
 		howToPlay = loadImage("img/howtoplay.png");
+		backButton = loadImage("img/backbutton.png");
 		
 	}
 	
@@ -92,11 +97,19 @@ public class DrawingSurface extends PApplet {
 			background(0);
 			
 			image(howToPlay, width/2, height/8, width/3, height/9);
+			image(backButton, 50, 50, width/10, height/10);
 			
 			textSize(20);
 			textAlign(LEFT);
 			text("- As a seeker, the objective of the game is to tag all the hiders.\n- The objective of the hiders is to avoid getting tagged until the 5 minute\ntimer is up.\n- Each hider receives one superpower that can be used multiple times\nper game, but has a cooldown after every use.", 20, height/4);
 			text("\n\n\n\n\n- Use the WASD keys to move around.\n- Press space bar to use special powers\n- If tagged, hider will return to a game over screen which will serve as a\nwaiting room until the next game can be played.", 20, height/4);
+			
+		}
+		
+		if(back) {
+			start = true;
+			help = false;
+			
 		}
 		
 		if(play) {
@@ -151,14 +164,23 @@ public class DrawingSurface extends PApplet {
 	
 	public void mousePressed() {
 		if(start) {
+			//play screen
 			if(mouseX > width/2 - width/5 && mouseX < width/2+width/5 && mouseY > height - height/8 - height/7 && mouseY < height - height/8 + height/7) {
 				start = false;
 				play = true;
 			}
+			//help screen
 			if(mouseX > width - width/10 - width/10 && mouseX < width && mouseY > height - height/10 - height/10 && mouseY < height) {
 				help = true;
 			}
 		}
+		//back to menu screen
+//		if(help) {
+//			if(mouseX > 50 - width/10 && mouseX < 50 + width/10 && mouseY > 50 - height/10 && mouseY < 50 + height/10); {
+//				help = false;
+//				start = true;
+//			}	
+//		}
 	
 	}
 }
