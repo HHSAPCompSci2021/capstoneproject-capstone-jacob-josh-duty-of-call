@@ -45,4 +45,17 @@ public class Sprite extends Rectangle2D.Double {
 			g.rect((float)x,(float)y,(float)width,(float)height);
 		}
 	}
+//	public double getX() {
+//		return x;
+//	}
+//	public void setX(double xCoord) {
+//		xCoord = x;
+//	}
+//	
+//	public double getY() {
+//		return y;
+//	}
+//	public void setY(double yCoord) {
+//		yCoord = y;
+//	}
 }

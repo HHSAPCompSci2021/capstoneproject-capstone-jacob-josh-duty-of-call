@@ -9,6 +9,7 @@ package gameplay;
 
 import java.util.ArrayList;
 
+import grid.Map;
 import processing.core.PImage;
 
 /**
@@ -30,6 +31,8 @@ public class Hider extends Sprite {
 	private boolean invisibility;
 	
 	private int lives, score;
+	
+	private Map map;
 	
 	private double xVel, yVel;
 	

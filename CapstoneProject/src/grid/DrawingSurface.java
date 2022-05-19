@@ -24,6 +24,7 @@ import processing.core.PImage;
 public class DrawingSurface extends PApplet {
 
 	//private Sprite sprite;
+	private ArrayList<Hider> hiders;
 	private Hider hider;
 	private Seeker seeker;
 	
@@ -46,6 +47,7 @@ public class DrawingSurface extends PApplet {
 		start = true;
 		play = false;
 		gameOver = false;
+		hiders = new ArrayList<Hider>();
 		//map = new Map(map.txt);
 
 	}
@@ -56,7 +58,8 @@ public class DrawingSurface extends PApplet {
 	public void setup() {
 		hider = new Hider(loadImage("img/hider.png"), 60, 420);
 		seeker = new Seeker(loadImage("img/seeker.png"), 65, 360);
-		title = loadImage("title.png");
+		title = loadImage("img/title.png");
+		playButton = loadImage("img/playbutton.png");
 		
 	}
 	
@@ -76,6 +79,7 @@ public class DrawingSurface extends PApplet {
 			image(playButton, width/2, height-height/8, width/5, height/10);
 			hider = new Hider(loadImage("img/hider.png"), 45, 45);
 			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
+			
 		}
 		if(play) {
 			background(255);
@@ -94,12 +98,22 @@ public class DrawingSurface extends PApplet {
 			
 			if(hider.isTagged(seeker)) {
 				hider.loseLife();
+				hiders.remove(hider);
 				gameOver=true;
 			}
 		}
 		if(gameOver) {
-			start = true;
-			play = false;
+			background(0);
+			
+			textAlign(CENTER);
+			textSize(50);
+			text("GAME OVER", width/2, height/2);
+			
+			if(hiders.size()==0) {
+				start=true;
+				play=false;
+				gameOver=false;
+			}
 		}
 
 	}
@@ -115,5 +129,14 @@ public class DrawingSurface extends PApplet {
 		} else if (keyCode == KeyEvent.VK_RIGHT) {
 			hider.move(1, 0);
 		}
-	}	
+	}
+	
+	public void mousePressed() {
+		if(start) {
+			if(mouseX > width/2 - width/5 && mouseX < width/2+width/5 && mouseY > height - height/8 - height/10 && mouseY < height - height/8 + height/10) {
+				start = false;
+				play = true;
+			}
+		}
+	}
 }
