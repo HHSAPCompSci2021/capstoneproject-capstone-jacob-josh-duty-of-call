@@ -31,10 +31,11 @@ public class DrawingSurface extends PApplet {
 	private boolean start;
 	private boolean gameOver;
 	
-	private Map map;
+	private PImage title;
+	private PImage playButton;
 	
-	private PImage hider2;
-	private PImage seeker2;
+	private Map map;
+
 		
 	
 	
@@ -53,7 +54,9 @@ public class DrawingSurface extends PApplet {
 	 * set up function that sets up the drawingsurface
 	 */
 	public void setup() {
-		hider2 = loadImage
+		hider = new Hider(loadImage("img/hider.png"), 60, 420);
+		seeker = new Seeker(loadImage("img/seeker.png"), 65, 360);
+		title = loadImage("title.png");
 		
 	}
 	
@@ -61,11 +64,20 @@ public class DrawingSurface extends PApplet {
 	 * draws the program when it is executed
 	 */
 	public void draw() {
-		if(hider.isTagged(seeker)) {
-			gameOver=true;
-		}
+		imageMode(CENTER);
+		
+//		if(hider.isTagged(seeker)) {
+//			gameOver=true;
+//		}
 		if(start) {
+			//sets title screen color and uploads title
+			background(255);
+			image(title, width/2, height/8, width/3, height/9);
 			
+			//play button
+			image(playButton, width/2, height-height/8, width/5, height/10);
+			hider = new Hider(loadImage("img/hider.png"), 45, 45);
+			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
 		}
 		if(play) {
 			
