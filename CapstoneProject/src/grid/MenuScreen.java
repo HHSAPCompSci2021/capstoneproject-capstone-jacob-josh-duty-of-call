@@ -39,7 +39,7 @@ public class MenuScreen extends Screen{
 		
 		surface.rect(helpButton.x, helpButton.y, helpButton.width, helpButton.height, 10, 10, 10, 10);
 		surface.fill(0);
-		String str2 = "Play";
+		String str2 = "Help";
 		float x = surface.textWidth(str2);
 		surface.text(str2, helpButton.x+helpButton.width/2-w/2, helpButton.y+helpButton.height/2);
 		

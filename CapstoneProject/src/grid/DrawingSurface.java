@@ -10,6 +10,7 @@ import gameplay.Hider;
 import gameplay.Seeker;
 import gameplay.Sprite;
 import processing.core.PApplet;
+import processing.core.PImage;
 //import processing.core.PImage;
 
 /**
@@ -30,15 +31,11 @@ public class DrawingSurface extends PApplet {
 	private boolean start;
 	private boolean gameOver;
 	
-//	private PImage startScreen;
-//	private PImage endScreen;
-//	private Map map;
+	private Map map;
 	
-//	private Screen activeScreen;
-//	private ArrayList<Screen> screens;
-	
-//	private float ratioX, ratioY;
-	
+	private PImage hider2;
+	private PImage seeker2;
+		
 	
 	
 	/**
@@ -48,7 +45,7 @@ public class DrawingSurface extends PApplet {
 		start = true;
 		play = false;
 		gameOver = false;
-		
+		//map = new Map(map.txt);
 
 	}
 	
@@ -56,7 +53,7 @@ public class DrawingSurface extends PApplet {
 	 * set up function that sets up the drawingsurface
 	 */
 	public void setup() {
-		
+		hider2 = loadImage
 		
 	}
 	
