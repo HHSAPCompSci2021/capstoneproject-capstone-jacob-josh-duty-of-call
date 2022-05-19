@@ -11,6 +11,8 @@ package grid;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
+import processing.core.PApplet;
+
 /**
  * 
  * creates a map on drawing surface
@@ -28,7 +30,9 @@ public class Map {
 		grid = new boolean[ROWS][COLS];
 	}
 	
-	public void draw() {
+	public void draw(PApplet drawer, float x, float y, float height, float width ) {
+		drawer.fill(0);
+		
 		
 	}
 	
