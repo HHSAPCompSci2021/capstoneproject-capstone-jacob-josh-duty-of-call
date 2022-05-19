@@ -30,14 +30,17 @@ public class DrawingSurface extends PApplet {
 	private boolean start;
 	private boolean gameOver;
 	
-//	private PImage startScreen;
-//	private PImage endScreen;
-//	private Map map;
+	private PImage startScreen;
+	private PImage endScreen;
+	private Map map;
 	
-//	private Screen activeScreen;
-//	private ArrayList<Screen> screens;
+	private PImage hider2;
+	private PImage seeker2;
 	
-//	private float ratioX, ratioY;
+	private Screen activeScreen;
+	private ArrayList<Screen> screens;
+	
+	private float ratioX, ratioY;
 	
 	
 	
