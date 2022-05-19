@@ -9,7 +9,6 @@ import gameplay.Hider;
 
 import gameplay.Seeker;
 import gameplay.Sprite;
-import javafx.scene.paint.Color;
 import processing.core.PApplet;
 import processing.core.PImage;
 //import processing.core.PImage;
