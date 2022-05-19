@@ -9,6 +9,7 @@ import gameplay.Hider;
 
 import gameplay.Seeker;
 import gameplay.Sprite;
+import javafx.scene.paint.Color;
 import processing.core.PApplet;
 import processing.core.PImage;
 //import processing.core.PImage;
@@ -31,9 +32,12 @@ public class DrawingSurface extends PApplet {
 	private boolean play;
 	private boolean start;
 	private boolean gameOver;
+	private boolean help;
 	
 	private PImage title;
 	private PImage playButton;
+	private PImage helpButton;
+	private PImage howToPlay;
 	
 	private Map map;
 
@@ -60,6 +64,8 @@ public class DrawingSurface extends PApplet {
 		seeker = new Seeker(loadImage("img/seeker.png"), 65, 360);
 		title = loadImage("img/title.png");
 		playButton = loadImage("img/playbutton.png");
+		helpButton = loadImage("img/helpbutton.png");
+		howToPlay = loadImage("img/howtoplay.png");
 		
 	}
 	
@@ -73,14 +79,27 @@ public class DrawingSurface extends PApplet {
 		if(start) {
 			//sets title screen color and uploads title
 			background(255);
-			image(title, width/2, height/8, width/3, height/9);
+			image(title, width/2, height/8, width/2, height/5);
 			
 			//play button
-			image(playButton, width/2, height-height/8, width/5, height/10);
-			hider = new Hider(loadImage("img/hider.png"), 45, 45);
-			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
+			image(playButton, width/2, height-height/8, width/5, height/7);
+			image(helpButton, width-width/10, height-height/10, width/10, height/10);
+//			hider = new Hider(loadImage("img/hider.png"), 45, 45);
+//			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
 			
 		}
+		
+		if(help) {
+			background(0);
+			
+			image(howToPlay, width/2, height/8, width/3, height/9);
+			
+			textSize(20);
+			textAlign(LEFT);
+			text("- As a seeker, the objective of the game is to tag all the hiders.\n- The objective of the hiders is to avoid getting tagged until the 5 minute\ntimer is up.\n- Each hider receives one superpower that can be used multiple times\nper game, but has a cooldown after every use.", 20, height/4);
+			text("\n\n\n\n\n- Use the WASD keys to move around.\n- Press space bar to use special powers\n- If tagged, hider will return to a game over screen which will serve as a\nwaiting room until the next game can be played.", 20, height/4);
+		}
+		
 		if(play) {
 			background(255);
 			
@@ -133,10 +152,14 @@ public class DrawingSurface extends PApplet {
 	
 	public void mousePressed() {
 		if(start) {
-			if(mouseX > width/2 - width/5 && mouseX < width/2+width/5 && mouseY > height - height/8 - height/10 && mouseY < height - height/8 + height/10) {
+			if(mouseX > width/2 - width/5 && mouseX < width/2+width/5 && mouseY > height - height/8 - height/7 && mouseY < height - height/8 + height/7) {
 				start = false;
 				play = true;
 			}
+			if(mouseX > width - width/10 - width/10 && mouseX < width && mouseY > height - height/10 - height/10 && mouseY < height) {
+				help = true;
+			}
 		}
+	
 	}
 }
