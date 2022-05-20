@@ -14,6 +14,7 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import rparikh931.shapes.Line;
 
 /**
  * 
@@ -29,13 +30,14 @@ public class Map {
 
 	public Map() {
 		
+		
 	}
 	
 	public void draw(PApplet drawer) {
-		drawer.stroke(0);
+		
 		drawer.line(60, 60, 100, 100);
 		
-		lineDraw();
+		lineDraw(40,60,80,100);
 		
 	}
 	
@@ -43,8 +45,8 @@ public class Map {
 		return false;
 	}
 	
-	public void lineDraw() {
-		left = new Line2D.Float(10,10,10, 50);
+	public void lineDraw(float x1, float x2, float y1, float y2) {
+		left = new Line2D.Float(x1,x2,y1, y2);
 	}
 	
 	public double getHeight() {

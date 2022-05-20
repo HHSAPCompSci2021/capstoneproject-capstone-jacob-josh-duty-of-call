@@ -124,8 +124,9 @@ public class DrawingSurface extends PApplet {
 			background(0);
 			
 			if(map != null) {
-				map.lineDraw();
+				map.draw(this);
 			}
+			
 			
 			textSize(10);
 			textAlign(LEFT);
