@@ -175,17 +175,18 @@ public class DrawingSurface extends PApplet {
 			if (mouseX > width - width / 13 - width / 13 && mouseX < width - width / 20
 					&& mouseY > height - height / 13 - height / 13 && mouseY < height - height / 21) {
 				help = true;
+				start = false;
 
 			}
-			// return back to main screen
-			if (help) {
-				if (mouseX > width/70 && mouseX < width/9 && mouseY > height/22
-						&& mouseY < height/7) {
-					help = false;
-					start = true;
-				}
-			} 
-		}		
+			
+		}
+		// return back to main screen
+		if (help) {
+			if (mouseX > width/70 && mouseX < width/9 && mouseY > height/22 && mouseY < height/7) {
+				help = false;
+				start = true;
+			}
+		} 
 
 	}
 
