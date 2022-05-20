@@ -87,8 +87,7 @@ public class DrawingSurface extends PApplet {
 			image(playButton, width / 2, height - height / 8, width / 4, height / 5);
 			// help button
 			image(helpButton, width - width / 10, height - height / 10, width / 10, height / 10);
-//			hider = new Hider(loadImage("img/hider.png"), 45, 45);
-//			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
+
 			// pic of hider
 			image(picOfHider, width / 2, height - height / 2, width / 2, height / 3);
 
@@ -106,7 +105,6 @@ public class DrawingSurface extends PApplet {
 					20, height / 4);
 			text("\n\n\n\n\n- Use the WASD keys to move around.\n- Press space bar to use special powers\n- If tagged, hider will return to a game over screen which will serve as a\nwaiting room until the next game can be played.",
 					20, height / 4);
-
 		}
 
 		if (back) {
@@ -123,40 +121,40 @@ public class DrawingSurface extends PApplet {
 			}
 
 			textSize(10);
-		
-		if(play) {
-			background(255);
-			
-			if(map != null) {
-				map.draw(this);
+
+			if (play) {
+				background(255);
+
+				if (map != null) {
+					map.draw(this);
+				}
+
+				fill(0, 0, 0);
+				textSize(15);
+				textAlign(LEFT);
+				text("POINTS: " + hider.getScore(), width / 40, height / 28);
+
+				textAlign(RIGHT);
+				text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
+
+				if (hider.isTagged(seeker)) {
+					hider.loseLife();
+					hiders.remove(hider);
+					gameOver = true;
+				}
 			}
-			
-			fill(0, 0, 0);
-			textSize(15);
-			textAlign(LEFT);
-			text("POINTS: " + hider.getScore(), width / 40, height / 28);
+			if (gameOver) {
+				background(0);
 
-			textAlign(RIGHT);
-			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
+				textAlign(CENTER);
+				textSize(50);
+				text("GAME OVER", width / 2, height / 2);
 
-			if (hider.isTagged(seeker)) {
-				hider.loseLife();
-				hiders.remove(hider);
-				gameOver = true;
-			}
-		}
-		if (gameOver) {
-			background(0);
-
-			textAlign(CENTER);
-			textSize(50);
-			text("GAME OVER", width / 2, height / 2);
-
-			if (hiders.size() == 0) {
-				start = true;
-				play = false;
-				gameOver = false;
-			}
+				if (hiders.size() == 0) {
+					start = true;
+					play = false;
+					gameOver = false;
+				}
 			}
 		}
 
@@ -188,26 +186,23 @@ public class DrawingSurface extends PApplet {
 			}
 			// help screen
 			if (mouseX > width - width / 13 - width / 13 && mouseX < width - width / 20
-					&& mouseY > height - height / 13 - height / 13 && mouseY < height - height/21) {
+					&& mouseY > height - height / 13 - height / 13 && mouseY < height - height / 21) {
 				help = true;
-				
+
+			}
+			if (help) {
+				if (mouseX > width/70 && mouseX < width/9 && mouseY > height/22
+						&& mouseY < height/7) {
+					help = false;
+					start = true;
+				}
 			} else {
 
 			}
 		}
-		
+
 		// back to menu screen
-		//if ()
-//		if (back) {
-//			if(mouseX)
-//		}
-		//back to menu screen
-//		if(help) {
-//			if(mouseX > 50 - width/10 && mouseX < 50 + width/10 && mouseY > 50 - height/10 && mouseY < 50 + height/10); {
-//				help = false;
-//				start = true;
-//			}	
-//		}
+//		
 
 	}
 
