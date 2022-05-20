@@ -28,7 +28,7 @@ public class Map {
 	
 
 	public Map() {
-		grid = new boolean[ROWS][COLS];
+		
 	}
 	
 	public void draw(PApplet drawer, float x, float y, float height, float width ) {
