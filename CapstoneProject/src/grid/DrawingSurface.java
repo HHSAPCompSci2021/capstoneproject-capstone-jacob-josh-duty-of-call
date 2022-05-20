@@ -67,7 +67,7 @@ public class DrawingSurface extends PApplet {
 	public void setup() {
 		timerStart = System.currentTimeMillis();
 		hider = new Hider(loadImage("img/hider.png"), 30, 80);
-		seeker = new Seeker(loadImage("img/seeker.png"), width-100, height-100);
+		seeker = new Seeker(loadImage("img/seeker.png"), width-60, height-70);
 		title = loadImage("img/title.png");
 		playButton = loadImage("img/playbutton.png");
 		helpButton = loadImage("img/helpbutton.png");
@@ -192,7 +192,10 @@ public class DrawingSurface extends PApplet {
 		
 	}
 
-
+	/**
+	 * Moves hider and seeker when either WASD or arrow keys are pressed
+	 * Hider uses special powers when space bar is pressed
+	 */
 	public void keyPressed() {
 		//moves hider using arrow keys if game is on play screen
 		if (play) {
@@ -218,6 +221,9 @@ public class DrawingSurface extends PApplet {
 		}
 	}
 
+	/**
+	 * Switches between screens when mouse is pressed on buttons
+	 */
 	public void mousePressed() {
 		if (start) {
 			// play screen

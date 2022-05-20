@@ -19,24 +19,53 @@ public class Sprite extends Rectangle2D.Double {
 	 */
 	private PImage image;
 	
+	/**
+	 * Instantiates a Sprite and gives it default values
+	 * @param x x coordinate of sprite
+	 * @param y y coordinate of sprite
+	 * @param w width of sprite
+	 * @param h height of sprite
+	 */
 	public Sprite(int x, int y, int w, int h) {
 		this(null, x, y, w, h);
 	}
+	/**
+	 * Instantiates a Sprite image and gives it default values
+	 * @param img Sprite image (png)
+	 * @param x x coordinate of sprite
+	 * @param y y coordinate of sprite
+	 * @param w width of sprite
+	 * @param h height of sprite
+	 */
 	public Sprite(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
 		image = img;
 	}
 	
+	/**
+	 * Moves Sprite to a give location
+	 * @param x x coordinate of location sprite moves to
+	 * @param y y coordinate of location sprite moves to
+	 */
 	public void moveToLocation(double x, double y) {
 		super.x = x;
 		super.y = y;
 	}
 	
+	/**
+	 * Moves Sprite to a give location
+	 * @param x x coordinate of how much sprite moves left or right
+	 * @param y y coordinate of how much sprite moves up or down
+	 */
 	public void moveByAmount(double x, double y) {
 		super.x += x;
 		super.y += y;
 	}
 	
+	/**
+	 * Draws a sprite with coordinates (x,y) and width and height.
+	 * @param g PApplet surface to draw Sprite on
+	 */
 	public void draw(PApplet g) {
 		if (image != null)
 			g.image(image,(float)x,(float)y,(float)width,(float)height);
