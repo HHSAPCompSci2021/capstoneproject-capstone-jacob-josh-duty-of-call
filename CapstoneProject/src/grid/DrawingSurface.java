@@ -2,6 +2,7 @@ package grid;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 import gameplay.Hider;
@@ -11,6 +12,7 @@ import gameplay.Seeker;
 import gameplay.Sprite;
 import processing.core.PApplet;
 import processing.core.PImage;
+import rparikh931.shapes.Line;
 //import processing.core.PImage;
 
 /**
@@ -42,6 +44,8 @@ public class DrawingSurface extends PApplet {
 	private PImage picOfHider;
 	
 	private Map map;
+	
+
 
 		
 	
@@ -120,7 +124,7 @@ public class DrawingSurface extends PApplet {
 			background(255);
 			
 			if(map != null) {
-				map.draw(this, 0, 0, width/3, height);
+				map.lineDraw();
 			}
 			
 			textSize(10);
@@ -153,16 +157,18 @@ public class DrawingSurface extends PApplet {
 
 	}
 	public void keyPressed() {
-		if (keyCode == KeyEvent.VK_SPACE) {
-			hider.usePower();
-		}else if (keyCode == KeyEvent.VK_DOWN) {
-			hider.move(0, 1);
-		} else if (keyCode == KeyEvent.VK_UP) {
-			hider.move(0, -1);
-		} else if (keyCode == KeyEvent.VK_LEFT) {
-			hider.move(-1,0);
-		} else if (keyCode == KeyEvent.VK_RIGHT) {
-			hider.move(1, 0);
+		if(play) {
+			if (keyCode == KeyEvent.VK_SPACE) {
+				hider.usePower();
+			}else if (keyCode == KeyEvent.VK_DOWN) {
+				hider.move(0, 1);
+			} else if (keyCode == KeyEvent.VK_UP) {
+				hider.move(0, -1);
+			} else if (keyCode == KeyEvent.VK_LEFT) {
+				hider.move(-1,0);
+			} else if (keyCode == KeyEvent.VK_RIGHT) {
+				hider.move(1, 0);
+			}
 		}
 	}
 	
@@ -187,4 +193,7 @@ public class DrawingSurface extends PApplet {
 //		}
 	
 	}
+	
+	
+	
 }

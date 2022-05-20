@@ -10,6 +10,7 @@
 package grid;
 
 import java.awt.Rectangle;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -21,25 +22,28 @@ import processing.core.PApplet;
  */
 public class Map {
 	
-	private boolean[][] grid;
-	public final int ROWS = 50;
-	public final int COLS = 50;
 	private int x,y;
+	
+	private Line2D left;
 	
 
 	public Map() {
 		
 	}
 	
-	public void draw(PApplet drawer, float x, float y, float height, float width ) {
-		drawer.fill(0);
+	public void draw(PApplet drawer) {
 		
 		
+		lineDraw();
 		
 	}
 	
 	public boolean isValidLocation() {
 		return false;
+	}
+	
+	public void lineDraw() {
+		left = new Line2D.Float(10,10,10, 50);
 	}
 	
 	public double getHeight() {
