@@ -203,6 +203,14 @@ public class DrawingSurface extends PApplet {
 				hider.move(-1, 0);
 			} else if (keyCode == KeyEvent.VK_RIGHT && hider.getX() < width-50) {
 				hider.move(1, 0);
+			} else if (keyCode == KeyEvent.VK_S && seeker.getY()<height-70) {
+				seeker.move(0, 1);
+			} else if (keyCode == KeyEvent.VK_W && seeker.getY()>60) {
+				seeker.move(0, -1);
+			} else if (keyCode == KeyEvent.VK_A && seeker.getX() >20) {
+				seeker.move(-1, 0);
+			} else if (keyCode == KeyEvent.VK_D && seeker.getX() < width-50) {
+				seeker.move(1, 0);
 			}
 		}
 	}
