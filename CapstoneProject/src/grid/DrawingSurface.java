@@ -141,7 +141,7 @@ public class DrawingSurface extends PApplet {
 			if (hider.getX() >= 10 && hider.getX() <= width && hider.getY() >= 50 && hider.getY() <= height) {
 				timer = 300 - (System.currentTimeMillis() - timerStart) / 1000;
 			} else {
-				timer = 300;
+				timer = 120;
 				timerStart = System.currentTimeMillis();
 			}
 			
