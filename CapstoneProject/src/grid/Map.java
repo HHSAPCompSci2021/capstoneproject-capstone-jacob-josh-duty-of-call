@@ -32,7 +32,8 @@ public class Map {
 	}
 	
 	public void draw(PApplet drawer) {
-		
+		drawer.stroke(0);
+		drawer.line(60, 60, 100, 100);
 		
 		lineDraw();
 		

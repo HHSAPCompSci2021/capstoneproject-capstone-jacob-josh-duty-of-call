@@ -121,7 +121,7 @@ public class DrawingSurface extends PApplet {
 		}
 		
 		if(play) {
-			background(255);
+			background(0);
 			
 			if(map != null) {
 				map.lineDraw();
