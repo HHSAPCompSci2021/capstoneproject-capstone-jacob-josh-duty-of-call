@@ -66,8 +66,8 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void setup() {
 		timerStart = System.currentTimeMillis();
-		hider = new Hider(loadImage("img/hider.png"), 60, 420);
-		seeker = new Seeker(loadImage("img/seeker.png"), 65, 360);
+		hider = new Hider(loadImage("img/hider.png"), 30, 80);
+		seeker = new Seeker(loadImage("img/seeker.png"), width-100, height-100);
 		title = loadImage("img/title.png");
 		playButton = loadImage("img/playbutton.png");
 		helpButton = loadImage("img/helpbutton.png");
@@ -212,7 +212,7 @@ public class DrawingSurface extends PApplet {
 				seeker.move(0, -1);
 			} else if (keyCode == KeyEvent.VK_A && seeker.getX() >20) {
 				seeker.move(-1, 0);
-			} else if (keyCode == KeyEvent.VK_D && seeker.getX() < width-50) {
+			} else if (keyCode == KeyEvent.VK_D && seeker.getX() < width-60) {
 				seeker.move(1, 0);
 			}
 		}
