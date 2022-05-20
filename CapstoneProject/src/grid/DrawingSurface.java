@@ -138,7 +138,7 @@ public class DrawingSurface extends PApplet {
 			textAlign(RIGHT);
 			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
 			
-			if (hider.getX() > 0 && hider.getX() < width && hider.getY() > 0 && hider.getY() < height) {
+			if (hider.getX() >= 10 && hider.getX() <= width-50 && hider.getY() >= 50 && hider.getY() <= height-100) {
 				timer = 300 - (System.currentTimeMillis() - timerStart) / 1000;
 			} else {
 				timer = 300;
@@ -155,10 +155,10 @@ public class DrawingSurface extends PApplet {
 			if (hider.isTagged(seeker)) {
 				gameOver = true;
 				timer = 300;
-				hider.x = 20;
-				hider.y = 20;
-				seeker.x = width - 20;
-				seeker.y = height - 20;
+				hider.x = 30;
+				hider.y = 80;
+				seeker.x = width - 100;
+				seeker.y = height - 100;
 				seeker.setScore(100);
 			} else if(timer == 0) {
 				gameOver = true;
@@ -175,15 +175,18 @@ public class DrawingSurface extends PApplet {
 
 			textAlign(CENTER);
 			textSize(50);
-			text("GAME OVER!", width / 2, height / 3);
+			fill(240, 190, 15);
+			text("GAME OVER", width / 2, height / 4);
 			
-			image(playAgain, width / 2, height / 2, width / 3, height / 7);
+			image(playAgain, width / 2, height / 2 + height / 3, width / 3, height / 7);
 			
-			if(seeker.getScore()>=0) {
-				text("SEEKER WINS!", width / 2, height / 4);
+			if(seeker.getScore()>=100) {
+				fill(0);
+				text("SEEKER WINS!", width / 2, height / 3 + height / 5);
 			}
-			if(hider.getScore()>=0) {
-				text("HIDER WINS!", width / 2, height / 4);
+			if(hider.getScore()>=50) {
+				fill(0);
+				text("HIDERS WIN!", width / 2, height / 3 + height / 5);
 			}
 		}
 		
@@ -234,7 +237,7 @@ public class DrawingSurface extends PApplet {
 		
 		// play again button
 		if(gameOver) {
-			if(mouseX > width/2 - width/3 && mouseX < width/2 + width/3 && mouseY > height/2 - height/7 && mouseY < height/2 + height/7){
+			if(mouseX > width/2 - width/3 && mouseX < width/2 + width/3 && mouseY > height/2 + height/3 - height/7 && mouseY < height/2 + height/3 + height/7){
 				gameOver = false;
 				start = true;
 				
