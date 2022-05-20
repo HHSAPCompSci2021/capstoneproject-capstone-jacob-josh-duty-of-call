@@ -9,6 +9,7 @@
 
 package grid;
 
+import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
@@ -25,8 +26,6 @@ public class Map {
 	
 	private int x,y;
 	
-	private Line2D left;
-	
 
 	public Map() {
 		
@@ -35,20 +34,14 @@ public class Map {
 	
 	public void draw(PApplet drawer) {
 		
-		drawer.line(60, 60, 100, 100);
+		drawer.line(0, 0, 800, 0);
+		drawer.line(0, 0, 0, 600);
+		drawer.line(0, 600, 800, 600);
+		drawer.line(800, 0, 800, 600);
 		
-		lineDraw(40,60,80,100);
 		
 	}
 	
-	public boolean isValidLocation() {
-		if ()
-		return false;
-	}
-	
-	public void lineDraw(float x1, float x2, float y1, float y2) {
-		left = new Line2D.Float(x1,x2,y1, y2);
-	}
 	
 	public double getHeight() {
 		return x;

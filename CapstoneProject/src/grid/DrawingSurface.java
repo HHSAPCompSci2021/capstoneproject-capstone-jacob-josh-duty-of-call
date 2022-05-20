@@ -2,7 +2,6 @@ package grid;
 
 import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 import gameplay.Hider;
@@ -11,7 +10,6 @@ import gameplay.Seeker;
 import gameplay.Sprite;
 import processing.core.PApplet;
 import processing.core.PImage;
-import rparikh931.shapes.Line;
 //import processing.core.PImage;
 
 /**
@@ -71,6 +69,7 @@ public class DrawingSurface extends PApplet {
 		howToPlay = loadImage("img/howtoplay.png");
 		backButton = loadImage("img/backbutton.png");
 		picOfHider = loadImage("img/picofhider.png");
+		map = new Map();
 	}
 
 	/**
@@ -115,6 +114,7 @@ public class DrawingSurface extends PApplet {
 			help = false;
 
 		}
+<<<<<<< Updated upstream
 
 		if (play) {
 			background(0);
@@ -124,6 +124,18 @@ public class DrawingSurface extends PApplet {
 			}
 
 			textSize(10);
+=======
+		
+		if(play) {
+			background(255);
+			
+			if(map != null) {
+				map.draw(this);
+			}
+			
+			fill(0, 0, 0);
+			textSize(15);
+>>>>>>> Stashed changes
 			textAlign(LEFT);
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 
@@ -185,9 +197,16 @@ public class DrawingSurface extends PApplet {
 
 			}
 		}
+<<<<<<< Updated upstream
 		
 		// back to menu screen
 		if ()
+=======
+//		if (back) {
+//			if(mouseX)
+//		}
+		//back to menu screen
+>>>>>>> Stashed changes
 //		if(help) {
 //			if(mouseX > 50 - width/10 && mouseX < 50 + width/10 && mouseY > 50 - height/10 && mouseY < 50 + height/10); {
 //				help = false;
