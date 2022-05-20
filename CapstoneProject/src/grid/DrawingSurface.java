@@ -114,7 +114,6 @@ public class DrawingSurface extends PApplet {
 			help = false;
 
 		}
-<<<<<<< Updated upstream
 
 		if (play) {
 			background(0);
@@ -124,7 +123,6 @@ public class DrawingSurface extends PApplet {
 			}
 
 			textSize(10);
-=======
 		
 		if(play) {
 			background(255);
@@ -135,7 +133,6 @@ public class DrawingSurface extends PApplet {
 			
 			fill(0, 0, 0);
 			textSize(15);
->>>>>>> Stashed changes
 			textAlign(LEFT);
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 
@@ -159,6 +156,7 @@ public class DrawingSurface extends PApplet {
 				start = true;
 				play = false;
 				gameOver = false;
+			}
 			}
 		}
 
@@ -197,16 +195,13 @@ public class DrawingSurface extends PApplet {
 
 			}
 		}
-<<<<<<< Updated upstream
 		
 		// back to menu screen
-		if ()
-=======
+		//if ()
 //		if (back) {
 //			if(mouseX)
 //		}
 		//back to menu screen
->>>>>>> Stashed changes
 //		if(help) {
 //			if(mouseX > 50 - width/10 && mouseX < 50 + width/10 && mouseY > 50 - height/10 && mouseY < 50 + height/10); {
 //				help = false;
