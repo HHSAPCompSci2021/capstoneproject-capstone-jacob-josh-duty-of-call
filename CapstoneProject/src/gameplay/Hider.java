@@ -50,7 +50,7 @@ public class Hider extends Sprite {
 	}
 	
 	public void draw(PApplet drawer) {
-		drawer.image(img, (float)x, (float)y);
+		drawer.image(img, (float)x, (float)y, HIDER_WIDTH, HIDER_HEIGHT);
 	}
 	
 	public void act() {

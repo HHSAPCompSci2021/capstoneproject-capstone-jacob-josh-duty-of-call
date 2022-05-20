@@ -11,6 +11,7 @@ package gameplay;
 import java.awt.List;
 import java.util.ArrayList;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Seeker extends Sprite {
@@ -18,6 +19,7 @@ public class Seeker extends Sprite {
 	public static final int SEEKER_WIDTH = 30;
 	public static final int SEEKER_HEIGHT = 30;
 	private int tagged;
+	private PImage img;
 
 	
 /*
@@ -25,6 +27,11 @@ public class Seeker extends Sprite {
  */
 	public Seeker(PImage img, int x, int y) {
 		super(img, x, y, SEEKER_WIDTH, SEEKER_HEIGHT);
+		this.img = img;
+	}
+	
+	public void draw(PApplet drawer) {
+		drawer.image(img, (float)x, (float)y, SEEKER_WIDTH, SEEKER_HEIGHT);
 	}
 	
 	/*

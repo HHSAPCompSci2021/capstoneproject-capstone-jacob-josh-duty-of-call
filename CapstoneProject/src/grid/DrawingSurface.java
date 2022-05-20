@@ -44,7 +44,7 @@ public class DrawingSurface extends PApplet {
 	private Map map;
 
 	/**
-	 * creates a surface to be drawn on and extends PApplet
+	 * Creates a new DrawingSurface and sets primitive data type fields to default values
 	 */
 	public DrawingSurface() {
 		start = true;
@@ -58,7 +58,7 @@ public class DrawingSurface extends PApplet {
 	}
 
 	/**
-	 * set up function that sets up the drawingsurface
+	 * Loads images and instantiates hiders and seekers to be added on drawing surface in draw() method
 	 */
 	public void setup() {
 		hider = new Hider(loadImage("img/hider.png"), 60, 420);
@@ -73,7 +73,8 @@ public class DrawingSurface extends PApplet {
 	}
 
 	/**
-	 * draws the program when it is executed
+	 * The statements in draw() are executed until the program is stopped. 
+	 * Switches between screens and adds hiders and seekers to the map
 	 */
 	public void draw() {
 		imageMode(CENTER);
@@ -88,14 +89,12 @@ public class DrawingSurface extends PApplet {
 			// help button
 			image(helpButton, width - width / 10, height - height / 10, width / 10, height / 10);
 
-			hider = new Hider(loadImage("img/hider.png"), 45, 45);
-//			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
-
 			// pic of hider
 			image(picOfHider, width / 2, height - height / 2, width / 2, height / 3);
 
 		}
-
+		
+		//switches to screen with instructions
 		if (help) {
 			background(0);
 
@@ -110,55 +109,49 @@ public class DrawingSurface extends PApplet {
 					20, height / 4);
 		}
 
+		//returns back to start screen if back button is clicked
 		if (back) {
 			start = true;
 			help = false;
-
 		}
 
+		//switches to play screen if play now button is clicked
 		if (play) {
-			background(0);
+			background(255);
 
 			if (map != null) {
 				map.draw(this);
+				hider.draw(this);
+				seeker.draw(this);
 			}
+			
+			fill(0, 0, 0);
+			textSize(15);
+			textAlign(LEFT);
+			text("POINTS: " + hider.getScore(), width / 40, height / 28);
+			textAlign(RIGHT);
+			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
 
-			textSize(10);
-
-			if (play) {
-				background(255);
-
-				if (map != null) {
-					map.draw(this);
-					hider.draw(this);
-				}
-
-				fill(0, 0, 0);
-				textSize(15);
-				textAlign(LEFT);
-				text("POINTS: " + hider.getScore(), width / 40, height / 28);
-
-				textAlign(RIGHT);
-				text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
-
-				if (hider.isTagged(seeker)) {
-					hider.loseLife();
-					hiders.remove(hider);
-					gameOver = true;
-				}
-			}	
-			if (gameOver) {
-				background(0);
-
-				textAlign(CENTER);
-				textSize(50);
-				text("GAME OVER", width / 2, height / 2);
+			if (hider.isTagged(seeker)) {
+				hider.loseLife();
+				hiders.remove(hider);
+				gameOver = true;
 			}
+		}	
+			
+		//switches to game over screen when all lives are lost
+		if (gameOver) {
+			background(0);
+
+			textAlign(CENTER);
+			textSize(50);
+			text("GAME OVER", width / 2, height / 2);
 		}
-
 	}
 
+
 	public void keyPressed() {
+		//moves hider using arrow keys if game is on play screen
 		if (play) {
 			if (keyCode == KeyEvent.VK_SPACE) {
 				hider.usePower();
@@ -188,6 +181,7 @@ public class DrawingSurface extends PApplet {
 				help = true;
 
 			}
+			// return back to main screen
 			if (help) {
 				if (mouseX > width/70 && mouseX < width/9 && mouseY > height/22
 						&& mouseY < height/7) {
@@ -197,10 +191,7 @@ public class DrawingSurface extends PApplet {
 			} else {
 
 			}
-		}
-
-		// back to menu screen
-//		
+		}		
 
 	}
 
