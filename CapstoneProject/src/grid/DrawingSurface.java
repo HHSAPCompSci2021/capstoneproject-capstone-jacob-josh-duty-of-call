@@ -159,9 +159,11 @@ public class DrawingSurface extends PApplet {
 				hider.y = 20;
 				seeker.x = width - 20;
 				seeker.y = height - 20;
+				seeker.setScore(100);
 			} else if(timer == 0) {
 				gameOver = true;
 				timer = 300;
+				hider.setScore(50);
 			}
 				
 		}	
@@ -176,6 +178,13 @@ public class DrawingSurface extends PApplet {
 			text("GAME OVER!", width / 2, height / 3);
 			
 			image(playAgain, width / 2, height / 2, width / 3, height / 7);
+			
+			if(seeker.getScore()>=0) {
+				text("SEEKER WINS!", width / 2, height / 4);
+			}
+			if(hider.getScore()>=0) {
+				text("HIDER WINS!", width / 2, height / 4);
+			}
 		}
 		
 	}

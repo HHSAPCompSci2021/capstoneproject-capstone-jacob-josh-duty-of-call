@@ -8,8 +8,6 @@
  */
 package gameplay;
 
-import java.awt.List;
-import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -18,7 +16,7 @@ public class Seeker extends Sprite {
 	
 	public static final int SEEKER_WIDTH = 30;
 	public static final int SEEKER_HEIGHT = 30;
-	private int tagged;
+	private int score;
 	private PImage img;
 
 	
@@ -52,18 +50,17 @@ public class Seeker extends Sprite {
 		}
 	}
 	
-//	public void tagged(ArrayList<Sprite> hiders) {
-//		for (Seeker s: hiders) {
-//			if(super.intersects(s)) {
-//				tagged +=1;
-//			}
-//		}
-//	}
 	
 	public double getX() {
 		return super.getX();
 	}
 	public double getY() {
 		return super.getY();
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	public int getScore() {
+		return score;
 	}
 }

@@ -24,9 +24,6 @@ public class Hider extends Sprite {
 	public static final int HIDER_WIDTH = 30;
 	public static final int HIDER_HEIGHT = 30;
 	
-	private ArrayList<SpecialPowers> powers;
-	private String power;
-	
 	private SpecialPowers speedBoost;
 	private boolean wallPhase;
 	private boolean taserStun;
@@ -105,52 +102,16 @@ public class Hider extends Sprite {
 	
 	public void assignPowers() {
 		
-		int i = (int)(Math.random()*powers.size());
-		
-		if(powers.get(i)==speedBoost) {
-			this.accelerate(1, 1);
-		}
-//		powers.add(1, speedboost);
-//		powers.add(2, taserstun);
-//		powers.add(3, wallphase);
-//		powers.add(4, invisibility);
-//		
-//		int i = (int)(Math.random()*powers.size());
-//		if(powers.get(i) == "speedboost") {
-//			speedBoost = true;
-//			powers.remove(i);
-//				
-//		}
-//		if(powers.get(i) == "taserstun") {
-//			taserStun = true;
-//			powers.remove(i);
-//			
-//		}
-//		if(powers.get(i) == "wallphase") {
-//			wallPhase = true;
-//			powers.remove(i);
-//		}
-//		if(powers.get(i) == "invisibility") {
-//			invisibility = true;
-//			powers.remove(i);
-//		}
-		
+	
 	}
 	
 	public String getPowers() {
-		return power;
+		return null;
 	}
 	
 	public boolean usePower() {
-//		if(speedBoost) {
-//			xVel+=2;
-//			yVel+=2;
-//			
-//			x+=xVel;
-//			y+=yVel;
-//		}
+
 		if(taserStun) {
-			//hider.taserStun();
 			return true;
 		}
 		if(wallPhase) {

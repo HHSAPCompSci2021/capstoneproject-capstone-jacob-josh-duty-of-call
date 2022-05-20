@@ -33,12 +33,16 @@ public class Map {
 	}
 	
 	public void draw(PApplet drawer) {
-		drawer.line(0, 0, 800, 0);
-		drawer.line(0, 0, 0, 600);
-		drawer.line(0, 600, 800, 600);
-		drawer.line(800, 0, 800, 600);
+		drawer.fill(255);
+		drawer.rect(10, 50, drawer.width - 50, drawer.height - 100);
 		
-		
+	}
+	
+	public void setHeight(int x) {
+		this.x = x;
+	}
+	public void setWidth(int y) {
+		this.y = y;
 	}
 	
 	
