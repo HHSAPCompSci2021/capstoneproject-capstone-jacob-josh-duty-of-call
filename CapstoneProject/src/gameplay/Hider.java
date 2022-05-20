@@ -11,6 +11,7 @@ package gameplay;
 import java.util.ArrayList;
 
 import grid.Map;
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
@@ -31,18 +32,40 @@ public class Hider extends Sprite {
 	private boolean taserStun;
 	private boolean invisibility;
 	
+	private PImage img;
+	
 	private int lives, score;
 	
 	private Map map;
 	
 	private double xVel, yVel;
 	
-	private int direction;
+	private int dir;
 	
 	public Hider(PImage img, int x, int y) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
+		this.img = img;
 		lives = 1;
 		
+	}
+	
+	public void draw(PApplet drawer) {
+		drawer.image(img, (float)x, (float)y);
+	}
+	
+	public void act() {
+		if(this.getX() <= 0) {
+			move(0, 0);
+		}
+		if(this.getX() >= 800) {
+			move(0, 0);
+		}
+		if(this.getY() <= 0) {
+			move(0, 0);
+		}
+		if(this.getY() >= 600) {
+			move(0, 0);
+		}
 	}
 
 /**
@@ -90,7 +113,7 @@ public class Hider extends Sprite {
 		int i = (int)(Math.random()*powers.size());
 		
 		if(powers.get(i)==speedBoost) {
-			
+			this.accelerate(1, 1);
 		}
 //		powers.add(1, speedboost);
 //		powers.add(2, taserstun);
@@ -144,9 +167,6 @@ public class Hider extends Sprite {
 		return false;
 	}
 	
-	public void draw() {
-		
-	}
 	
 	public boolean isTagged(Seeker other) {
 		if(this.intersects(other)) {
@@ -183,10 +203,10 @@ public class Hider extends Sprite {
 		return y;
 	}
 	public void setDirection(int direction) {
-		this.direction = direction;
+		this.dir = direction;
 	}
 	public int getDirection() {
-		return direction;
+		return dir;
 	}
 
 	
