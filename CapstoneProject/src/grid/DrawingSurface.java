@@ -87,12 +87,10 @@ public class DrawingSurface extends PApplet {
 			image(playButton, width / 2, height - height / 8, width / 4, height / 5);
 			// help button
 			image(helpButton, width - width / 10, height - height / 10, width / 10, height / 10);
-<<<<<<< Updated upstream
 
-=======
 			hider = new Hider(loadImage("img/hider.png"), 45, 45);
 //			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
->>>>>>> Stashed changes
+
 			// pic of hider
 			image(picOfHider, width / 2, height - height / 2, width / 2, height / 3);
 
@@ -118,7 +116,6 @@ public class DrawingSurface extends PApplet {
 
 		}
 
-<<<<<<< Updated upstream
 		if (play) {
 			background(0);
 
@@ -127,28 +124,13 @@ public class DrawingSurface extends PApplet {
 			}
 
 			textSize(10);
-=======
-		
-		if(play) {
-			background(255);
-			
-			if(map != null) {
-				map.draw(this);
-			}
-			
-			hider.draw(this);
-			
-			fill(0, 0, 0);
-			textSize(15);
-			textAlign(LEFT);
-			text("POINTS: " + hider.getScore(), width / 40, height / 28);
->>>>>>> Stashed changes
 
 			if (play) {
 				background(255);
 
 				if (map != null) {
 					map.draw(this);
+					hider.draw(this);
 				}
 
 				fill(0, 0, 0);
@@ -164,23 +146,14 @@ public class DrawingSurface extends PApplet {
 					hiders.remove(hider);
 					gameOver = true;
 				}
-			}
-<<<<<<< Updated upstream
+			}	
 			if (gameOver) {
 				background(0);
 
 				textAlign(CENTER);
 				textSize(50);
 				text("GAME OVER", width / 2, height / 2);
-
-				if (hiders.size() == 0) {
-					start = true;
-					play = false;
-					gameOver = false;
-				}
 			}
-=======
->>>>>>> Stashed changes
 		}
 
 	}
