@@ -36,8 +36,6 @@ public class Hider extends Sprite {
 	
 	private int lives, score;
 	
-	private int xgrid, ygrid;
-	
 	private int dir;
 	
 	public Hider(PImage img, int x, int y) {
@@ -52,19 +50,18 @@ public class Hider extends Sprite {
 	}
 	
 	public void act() {
-		int newX = xgrid;
-		int newY = ygrid;
-		if(newX <= 1) {
-			newX+=10;
+		
+		if(getX() <= 1) {
+			x+=10;
 		}
-		if(newX >= 799) {
-			newX-=10;
+		if(getX() >= 799) {
+			y-=10;
 		}
-		if(newY <= 1) {
-			newY+=10;
+		if(getY() <= 1) {
+			y+=10;
 		}
-		if(newY >= 599) {
-			newY-=10;
+		if(getY() >= 599) {
+			y-=10;
 		}
 		//setLocation(xBoundary, yBoundary);
 	}

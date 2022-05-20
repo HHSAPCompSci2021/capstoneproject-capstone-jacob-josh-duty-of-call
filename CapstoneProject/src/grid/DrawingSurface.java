@@ -1,6 +1,7 @@
 package grid;
 
 import java.awt.Point;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -32,6 +33,10 @@ public class DrawingSurface extends PApplet {
 	private boolean gameOver;
 	private boolean help;
 	private boolean back;
+	
+	private long timer;
+	private long timerStart;
+	private String timerMessage;
 
 	private PImage title;
 	private PImage playButton;
@@ -39,6 +44,7 @@ public class DrawingSurface extends PApplet {
 	private PImage howToPlay;
 	private PImage backButton;
 	private PImage picOfHider;
+	private PImage playAgain;
 
 	private Map map;
 
@@ -51,7 +57,7 @@ public class DrawingSurface extends PApplet {
 		gameOver = false;
 		help = false;
 		back = false;
-		// map = new Map(map.txt);
+		timerMessage = "";
 
 	}
 
@@ -59,6 +65,7 @@ public class DrawingSurface extends PApplet {
 	 * Loads images and instantiates hiders and seekers to be added on drawing surface in draw() method
 	 */
 	public void setup() {
+		timerStart = System.currentTimeMillis();
 		hider = new Hider(loadImage("img/hider.png"), 60, 420);
 		seeker = new Seeker(loadImage("img/seeker.png"), 65, 360);
 		title = loadImage("img/title.png");
@@ -67,6 +74,7 @@ public class DrawingSurface extends PApplet {
 		howToPlay = loadImage("img/howtoplay.png");
 		backButton = loadImage("img/backbutton.png");
 		picOfHider = loadImage("img/picofhider.png");
+		playAgain = loadImage("img/playagain.png");
 		map = new Map();
 	}
 
@@ -129,20 +137,47 @@ public class DrawingSurface extends PApplet {
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 			textAlign(RIGHT);
 			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
-
+			
+			if (hider.getX() > 0 && hider.getX() < width && hider.getY() > 0 && hider.getY() < height) {
+				timer = 300 - (System.currentTimeMillis() - timerStart) / 1000;
+			} else {
+				timer = 300;
+				timerStart = System.currentTimeMillis();
+			}
+			
+			timerMessage = "TIME LEFT: " + timer + " seconds";
+			
+			
+			
+			text(timerMessage, (float)0.9*width, (float)0.95*height);
+			
+			
 			if (hider.isTagged(seeker)) {
 				gameOver = true;
+				timer = 300;
+				hider.x = 20;
+				hider.y = 20;
+				seeker.x = width - 20;
+				seeker.y = height - 20;
+			} else if(timer == 0) {
+				gameOver = true;
+				timer = 300;
 			}
+				
 		}	
 			
 		//switches to game over screen when all lives are lost
 		if (gameOver) {
+			play = false;
 			background(150);
 
 			textAlign(CENTER);
 			textSize(50);
-			text("GAME OVER", width / 2, height / 2);
+			text("GAME OVER!", width / 2, height / 3);
+			
+			image(playAgain, width / 2, height / 2, width / 3, height / 7);
 		}
+		
 	}
 
 
@@ -184,9 +219,18 @@ public class DrawingSurface extends PApplet {
 		if (help) {
 			if (mouseX > width/70 && mouseX < width/9 && mouseY > height/22 && mouseY < height/7) {
 				help = false;
-				start = true;
+				start = true;	
 			}
-		} 
+		}
+		
+		// play again button
+		if(gameOver) {
+			if(mouseX > width/2 - width/3 && mouseX < width/2 + width/3 && mouseY > height/2 - height/7 && mouseY < height/2 + height/7){
+				gameOver = false;
+				start = true;
+				
+			}
+		}
 
 	}
 
