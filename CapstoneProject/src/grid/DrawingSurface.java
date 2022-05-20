@@ -83,10 +83,10 @@ public class DrawingSurface extends PApplet {
 		if(start) {
 			//sets title screen color and uploads title
 			background(255);
-			image(title, width/2, height/8, width/2, height/5);
+			image(title, width/2, height/8, width, height/3);
 			
 			//play button
-			image(playButton, width/2, height-height/8, width/5, height/7);
+			image(playButton, width/2, height-height/8, width/4, height/5);
 			image(helpButton, width-width/10, height-height/10, width/10, height/10);
 //			hider = new Hider(loadImage("img/hider.png"), 45, 45);
 //			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
