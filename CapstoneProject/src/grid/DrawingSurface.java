@@ -39,6 +39,7 @@ public class DrawingSurface extends PApplet {
 	private PImage helpButton;
 	private PImage howToPlay;
 	private PImage backButton;
+	private PImage picOfHider;
 	
 	private Map map;
 
@@ -70,7 +71,7 @@ public class DrawingSurface extends PApplet {
 		helpButton = loadImage("img/helpbutton.png");
 		howToPlay = loadImage("img/howtoplay.png");
 		backButton = loadImage("img/backbutton.png");
-		
+		picOfHider = loadImage("img/picofhider.png");
 	}
 	
 	/**
@@ -87,9 +88,12 @@ public class DrawingSurface extends PApplet {
 			
 			//play button
 			image(playButton, width/2, height-height/8, width/4, height/5);
+			//help button
 			image(helpButton, width-width/10, height-height/10, width/10, height/10);
 //			hider = new Hider(loadImage("img/hider.png"), 45, 45);
 //			seeker = new Seeker(loadImage("img/seeker.png"), 0, 0);
+			//pic of hider
+			image(picOfHider, width/2, height-height/2, width/2, height/3);
 			
 		}
 		
