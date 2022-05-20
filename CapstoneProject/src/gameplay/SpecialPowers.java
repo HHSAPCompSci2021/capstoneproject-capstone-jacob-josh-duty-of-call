@@ -27,9 +27,9 @@ public class SpecialPowers {
 	}
 	
 	/*
-	 * makes hider "invisible"
+	 * makes hider "invincible"
 	 */
-	public void invisibility() {
+	public void invincible() {
 		
 	}
 	
