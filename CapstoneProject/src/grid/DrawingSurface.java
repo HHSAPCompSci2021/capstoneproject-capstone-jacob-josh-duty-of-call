@@ -138,7 +138,7 @@ public class DrawingSurface extends PApplet {
 			textAlign(RIGHT);
 			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
 			
-			if (hider.getX() >= 10 && hider.getX() <= width-50 && hider.getY() >= 50 && hider.getY() <= height-100) {
+			if (hider.getX() >= 10 && hider.getX() <= width && hider.getY() >= 50 && hider.getY() <= height) {
 				timer = 300 - (System.currentTimeMillis() - timerStart) / 1000;
 			} else {
 				timer = 300;

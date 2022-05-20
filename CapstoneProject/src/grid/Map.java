@@ -37,8 +37,15 @@ public class Map {
 		drawer.fill(255);
 		drawer.rect(10, 50, drawer.width - 50, drawer.height - 100);
 		
-		drawer.rect(10, 100, 100, 100);
-		
+		drawer.fill(100);
+		drawer.rect(40, 80, 100, 80);
+		drawer.rect(670, 500, 150, 90);
+		drawer.rect(40, 190, 250, 100);
+		drawer.rect(40, 320, 30, 200);
+		drawer.rect(40, 550, 200, 50);
+		drawer.rect(600, 500, 220, 100);
+		drawer.rect(100, 320, 140, 200);
+		drawer.rect(270, 320, 20, 280);
 	}
 	
 //	public void setHeight(int x) {
