@@ -176,14 +176,20 @@ public class DrawingSurface extends PApplet {
 	public void mousePressed() {
 		if(start) {
 			//play screen
-			if(mouseX > width/2 - width/5 && mouseX < width/2+width/5 && mouseY > height - height/8 - height/7 && mouseY < height - height/8 + height/7) {
+			if(mouseX > width/2 - width/8 && mouseX < width/2+width/8 && mouseY > height - height/8 - height/10 && mouseY < height - height/8 + height/9) {
 				start = false;
 				play = true;
 			}
 			//help screen
-			if(mouseX > width - width/10 - width/10 && mouseX < width && mouseY > height - height/10 - height/10 && mouseY < height) {
+			if(mouseX > width - width/13 - width/13 && mouseX < width-width/20 && mouseY > height - height/10 - height/9 && mouseY < height) {
 				help = true;
 			}
+			else {
+				
+			}
+		}
+		if (back) {
+			if(mouseX)
 		}
 		//back to menu screen
 //		if(help) {

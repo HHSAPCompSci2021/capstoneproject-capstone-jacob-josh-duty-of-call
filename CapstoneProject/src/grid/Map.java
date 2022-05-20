@@ -42,6 +42,7 @@ public class Map {
 	}
 	
 	public boolean isValidLocation() {
+		if ()
 		return false;
 	}
 	
