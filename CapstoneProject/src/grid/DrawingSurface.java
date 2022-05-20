@@ -24,7 +24,6 @@ import processing.core.PImage;
 public class DrawingSurface extends PApplet {
 
 	// private Sprite sprite;
-	private ArrayList<Hider> hiders;
 	private Hider hider;
 	private Seeker seeker;
 
@@ -52,7 +51,6 @@ public class DrawingSurface extends PApplet {
 		gameOver = false;
 		help = false;
 		back = false;
-		hiders = new ArrayList<Hider>();
 		// map = new Map(map.txt);
 
 	}
@@ -133,15 +131,13 @@ public class DrawingSurface extends PApplet {
 			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
 
 			if (hider.isTagged(seeker)) {
-				hider.loseLife();
-				hiders.remove(hider);
 				gameOver = true;
 			}
 		}	
 			
 		//switches to game over screen when all lives are lost
 		if (gameOver) {
-			background(0);
+			background(150);
 
 			textAlign(CENTER);
 			textSize(50);
@@ -188,9 +184,7 @@ public class DrawingSurface extends PApplet {
 					help = false;
 					start = true;
 				}
-			} else {
-
-			}
+			} 
 		}		
 
 	}

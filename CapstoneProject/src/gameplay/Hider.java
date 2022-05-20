@@ -36,9 +36,7 @@ public class Hider extends Sprite {
 	
 	private int lives, score;
 	
-	private Map map;
-	
-	private double xVel, yVel;
+	private int xgrid, ygrid;
 	
 	private int dir;
 	
@@ -54,18 +52,21 @@ public class Hider extends Sprite {
 	}
 	
 	public void act() {
-		if(this.getX() <= 0) {
-			move(0, 0);
+		int newX = xgrid;
+		int newY = ygrid;
+		if(newX <= 1) {
+			newX+=10;
 		}
-		if(this.getX() >= 800) {
-			move(0, 0);
+		if(newX >= 799) {
+			newX-=10;
 		}
-		if(this.getY() <= 0) {
-			move(0, 0);
+		if(newY <= 1) {
+			newY+=10;
 		}
-		if(this.getY() >= 600) {
-			move(0, 0);
+		if(newY >= 599) {
+			newY-=10;
 		}
+		//setLocation(xBoundary, yBoundary);
 	}
 
 /**
@@ -74,37 +75,34 @@ public class Hider extends Sprite {
  */
 	public void move(int dirX, int dirY) {
 		if (dirX == 1) {
-			x+=1;
+			x+=10;
 		}
 		if (dirX == -1) {
-			x-=1;
+			x-=10;
 		}
 		if (dirY == 1) {
-			y+=1;
+			y+=10;
 		}
 		if (dirY == -1) {
-			y-=1;
+			y-=10;
 		}
-		if(dirX == 0) {
-			x+=0;
-		}
-		if(dirY == 0){
-			y+=0;
-		}
+		
 	}
+	
+	
 	
 	public void accelerate(int dirX, int dirY) {
 		if (dirX == 1) {
-			x+=2;
+			x+=5;
 		}
 		if (dirX == -1) {
-			x-=2;
+			x-=5;
 		}
 		if (dirY == 1) {
-			y+=2;
+			y+=5;
 		}
 		if (dirY == -1) {
-			y-=2;
+			y-=5;
 		}
 	}
 	
