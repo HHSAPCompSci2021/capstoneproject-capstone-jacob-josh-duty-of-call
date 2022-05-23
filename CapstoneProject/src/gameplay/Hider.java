@@ -222,12 +222,12 @@ public class Hider extends Sprite {
 	 * gives seeker faster movement speed
 	 */
 	public void speedBoost() {
-		new java.util.Timer().schedule(new java.util.TimerTask() {
-			@Override
-			public void run() {
+//		new java.util.Timer().schedule(new java.util.TimerTask() {
+//			@Override
+//			public void run() {
 				accelerate(1, 1);
-			}
-		}, 5000);
+//			}
+//		}, 5000);
 
 	}
 
