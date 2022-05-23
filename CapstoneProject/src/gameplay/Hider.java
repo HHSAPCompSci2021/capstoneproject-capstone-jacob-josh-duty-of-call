@@ -24,13 +24,19 @@ public class Hider extends Sprite {
 	
 	public static final int HIDER_WIDTH = 30;
 	public static final int HIDER_HEIGHT = 30;
+<<<<<<< Updated upstream
 	
 	private SpecialPowers speedBoost;
 	private boolean wallPhase;
 	private boolean taserStun;
 	private boolean invincible;
+=======
+
+>>>>>>> Stashed changes
 	
 	private Map map;
+	
+	private SpecialPowers powers;
 	
 	private PImage img;
 	
@@ -43,6 +49,7 @@ public class Hider extends Sprite {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
 		this.img = img;
 		lives = 1;
+		powers = null;
 		
 	}
 	
@@ -94,7 +101,9 @@ public class Hider extends Sprite {
 		
 	}
 	
-	
+	public SpecialPowers getPower() {
+		return powers; 
+	}
 	
 	public void accelerate(int dirX, int dirY) {
 		if (dirX == 1) {
@@ -111,6 +120,7 @@ public class Hider extends Sprite {
 		}
 	}
 	
+<<<<<<< Updated upstream
 	public void assignPowers() {
 		
 	
@@ -134,6 +144,8 @@ public class Hider extends Sprite {
 		return false;
 	}
 	
+=======
+>>>>>>> Stashed changes
 	
 	public boolean isTagged(Seeker other) {
 		if(this.intersects(other)) {

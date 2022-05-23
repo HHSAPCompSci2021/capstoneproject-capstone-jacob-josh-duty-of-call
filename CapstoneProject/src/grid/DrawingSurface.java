@@ -75,7 +75,7 @@ public class DrawingSurface extends PApplet {
 		backButton = loadImage("img/backbutton.png");
 		picOfHider = loadImage("img/picofhider.png");
 		playAgain = loadImage("img/playagain.png");
-		map = new Map();
+		map = new Map(this);
 	}
 
 	/**
@@ -136,7 +136,7 @@ public class DrawingSurface extends PApplet {
 			textAlign(LEFT);
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 			textAlign(RIGHT);
-			text("SPECIAL POWER: " + hider.getPowers(), width - width / 40, height / 28);
+			text("SPECIAL POWER: " + hider.getPower(), width - width / 40, height / 28);
 			
 			if (hider.getX() >= 10 && hider.getX() <= width && hider.getY() >= 50 && hider.getY() <= height) {
 				timer = 120 - (System.currentTimeMillis() - timerStart) / 1000;
@@ -200,7 +200,7 @@ public class DrawingSurface extends PApplet {
 		//moves hider using arrow keys if game is on play screen
 		if (play) {
 			if (keyCode == KeyEvent.VK_SPACE) {
-				hider.usePower();
+				//hider.usePower();
 			} else if (keyCode == KeyEvent.VK_DOWN && hider.getY()<height-70) {
 				hider.move(0, 1);
 			} else if (keyCode == KeyEvent.VK_UP && hider.getY()>62) {
