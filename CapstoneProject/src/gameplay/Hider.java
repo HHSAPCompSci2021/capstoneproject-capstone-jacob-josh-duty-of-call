@@ -109,6 +109,13 @@ public class Hider extends Sprite {
 		if (dirY == 1) {
 			y+=20;
 		}
+		
+		if (dirX == -1) {
+			x-=20;
+		}
+		if (dirY == -1) {
+			y-=20;
+		}
 
 	}
 	
@@ -225,7 +232,20 @@ public class Hider extends Sprite {
 //		new java.util.Timer().schedule(new java.util.TimerTask() {
 //			@Override
 //			public void run() {
-				accelerate(1, 1);
+		if (this.getDirection() == 0 ) {
+				accelerate(0, -1);
+		}
+		if (this.getDirection() == 180 ) {
+			accelerate(0, 1);
+	}
+		if (this.getDirection() == 90 ) {
+			accelerate(1, 0);
+	}
+		if (this.getDirection() == 270 ) {
+			accelerate(-1, 0);
+	}
+		
+		
 //			}
 //		}, 5000);
 
