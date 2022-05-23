@@ -33,6 +33,8 @@ public class Hider extends Sprite {
 	private Map map;
 	private Seeker seeker;
 	
+	private int xVel, yVel;
+	
 	private String powerName;
 	
 	private PImage img;
@@ -84,38 +86,24 @@ public class Hider extends Sprite {
  * Overrides the move method and describes how the hider moves
  * 
  */
-	public void move(int dirX, int dirY) {
-		if (dirX == 1) {
-			x+=10;
-		}
-		if (dirX == -1) {
-			x-=10;
-		}
-		if (dirY == 1) {
-			y+=10;
-		}
-		if (dirY == -1) {
-			y-=10;
-		}
+	public void move(int x, int y) {
+		this.x+=x + xVel;
+		this.y+=y + yVel;
 		
 	}
 	
 	
-	public void accelerate(int dirX, int dirY) {
-		if (dirX == 1) {
-			x+=20;
+	public void accelerate(int xVel, int yVel) {
+		if (xVel>0) {
+			this.xVel+=xVel;
+			move(xVel, yVel);
 		}
 
-		if (dirY == 1) {
-			y+=20;
+		if (yVel>0) {
+			this.yVel+=yVel;
+			move(xVel, yVel);
 		}
 		
-		if (dirX == -1) {
-			x-=20;
-		}
-		if (dirY == -1) {
-			y-=20;
-		}
 
 	}
 	
@@ -232,17 +220,17 @@ public class Hider extends Sprite {
 //		new java.util.Timer().schedule(new java.util.TimerTask() {
 //			@Override
 //			public void run() {
-		if (this.getDirection() == 0 ) {
-				accelerate(0, -1);
+		if (this.getDirection() == 0) {
+				accelerate(20, 0);
 		}
 		if (this.getDirection() == 180 ) {
-			accelerate(0, 1);
+			accelerate(20, 0);
 	}
 		if (this.getDirection() == 90 ) {
-			accelerate(1, 0);
+			accelerate(0, 20);
 	}
 		if (this.getDirection() == 270 ) {
-			accelerate(-1, 0);
+			accelerate(0, 20);
 	}
 		
 		
