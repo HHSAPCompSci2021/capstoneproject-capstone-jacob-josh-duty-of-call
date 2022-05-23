@@ -87,23 +87,17 @@ public class Hider extends Sprite {
  * 
  */
 	public void move(int x, int y) {
-		this.x+=x + xVel;
-		this.y+=y + yVel;
+		this.x+=x+xVel;
+		this.y+=y+yVel;
 		
 	}
 	
 	
 	public void accelerate(int xVel, int yVel) {
-		if (xVel>0) {
-			this.xVel+=xVel;
-			move(xVel, yVel);
-		}
-
-		if (yVel>0) {
-			this.yVel+=yVel;
-			move(xVel, yVel);
-		}
+		this.xVel += xVel;
+		this.yVel += yVel;
 		
+		//move(xVel, yVel);
 
 	}
 	
@@ -254,6 +248,8 @@ public class Hider extends Sprite {
 //		}, 3000);
 
 	}
+	
+	
 
 	
 }

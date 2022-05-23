@@ -34,19 +34,10 @@ public class Seeker extends Sprite {
 	/*
 	 * overrides the move method to show how the seeker moves
 	 */
-	public void move(int dirX, int dirY) {
-		if (dirX == 1) {
-			x += 15;
-		}
-		if (dirX == -1) {
-			x -= 15;
-		}
-		if (dirY == 1) {
-			y += 15;
-		}
-		if (dirY == -1) {
-			y -= 15;
-		}
+	public void move(int x, int y) {
+		this.x+=x;
+		this.y+=y;
+		
 	}
 
 //	public int peopleTagged(Hider other) {

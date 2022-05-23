@@ -67,7 +67,7 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void setup() {
 		timerStart = System.currentTimeMillis();
-		hider = new Hider(loadImage("img/hider.png"), 30, 80);
+		hider = new Hider(loadImage("img/hider.png"), 30, 70);
 		seeker = new Seeker(loadImage("img/seeker.png"), width-60, height-70);
 		title = loadImage("img/title.png");
 		playButton = loadImage("img/playbutton.png");
@@ -156,8 +156,9 @@ public class DrawingSurface extends PApplet {
 				if(hider.getLives() == 0) {
 					gameOver = true;
 					timer = 120;
+					timerStart = System.currentTimeMillis();
 					hider.x = 30;
-					hider.y = 80;
+					hider.y = 70;
 					seeker.x = width - 100;
 					seeker.y = height - 100;
 					seeker.setScore(100);
@@ -165,6 +166,11 @@ public class DrawingSurface extends PApplet {
 			} else if(timer == 0) {
 				gameOver = true;
 				timer = 120;
+				timerStart = System.currentTimeMillis();
+				hider.x = 30;
+				hider.y = 70;
+				seeker.x = width - 100;
+				seeker.y = height - 100;
 				hider.setScore(50);
 			}
 				
@@ -182,13 +188,17 @@ public class DrawingSurface extends PApplet {
 			
 			image(playAgain, width / 2, height / 2 + height / 3, width / 3, height / 7);
 			
-			if(seeker.getScore()>=100) {
+			if(seeker.getScore()>hider.getScore()) {
 				fill(0);
-				text("SEEKER WINS!", width / 2, height / 3 + height / 5);
+				text("SEEKER WINS! SCORE = " + seeker.getScore(), width / 2, height / 3 + height / 5);
 			}
-			if(hider.getScore()>=50) {
+			if(hider.getScore()>seeker.getScore()) {
 				fill(0);
-				text("HIDERS WIN!", width / 2, height / 3 + height / 5);
+				text("HIDERS WIN! SCORE = " + hider.getScore(), width / 2, height / 3 + height / 5);
+			}
+			if(hider.getScore()==seeker.getScore()) {
+				fill(0);
+				text("There is a tie! Scores = " + hider.getScore(), width / 2, height / 3 + height / 5);
 			}
 		}
 		
@@ -201,6 +211,11 @@ public class DrawingSurface extends PApplet {
 	public void keyPressed() {
 		//moves hider using arrow keys if game is on play screen
 		if (play) {
+			if(map.hitBoundaries(hider)==false) {
+				hider.x = 20;
+				hider.y = 70;
+				System.out.println("hit boundary");
+			}
 			if (keyCode == KeyEvent.VK_SPACE && hider.getY()<=height-70 && hider.getY()>=62 && hider.getX() >=20 && hider.getX() <= width-50) {
 				hider.accelerate(5,0);
 			} else if (keyCode == KeyEvent.VK_DOWN && hider.getY()<height-70) {
