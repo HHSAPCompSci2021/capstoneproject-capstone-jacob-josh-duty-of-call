@@ -57,9 +57,9 @@ public class SpecialPowers {
 		        new java.util.TimerTask() {
 		            @Override
 		            public void run() {
-		        		if (hider.isTagged(seeker)) {
-		        			hider.isTagged(seeker) = false;
-		        		}
+//		        		if (hider.isTagged(seeker)) {
+//		        			hider.isTagged(seeker) = false;
+//		        		}
 		            }
 		        }, 
 		        5000 
@@ -93,9 +93,9 @@ public class SpecialPowers {
 		        new java.util.TimerTask() {
 		            @Override
 		            public void run() {
-		        		if (hider.intersects(obstacles)) {
-		        			hider.intersects(obstacles) = false;
-		        		}
+//		        		if (hider.intersects(obstacles)) {
+//		        			hider.intersects(obstacles) = false;
+//		        		}
 		            }
 		        }, 
 		        5000 
