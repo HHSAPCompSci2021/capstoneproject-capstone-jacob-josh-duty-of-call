@@ -34,7 +34,8 @@ public class Hider extends Sprite {
 	
 	private PImage img;
 	
-	private int lives, score;
+	private int lives = 1;
+	private int score;
 	
 	private int dir;
 	
@@ -49,12 +50,12 @@ public class Hider extends Sprite {
 		drawer.image(img, (float)x, (float)y, HIDER_WIDTH, HIDER_HEIGHT);
 	}
 	
-	public void act(List<Sprite>) {
-		for (Sprite x: obstacles) {
-			if (super.intersects(x)) {
-				move(0,0);
-			}
-		}
+	public void act() {
+//		for (Sprite x: obstacles) {
+//			if (super.intersects(x)) {
+//				move(0,0);
+//			}
+//		}
 		
 		
 //		if(getX() <= 1) {
@@ -152,6 +153,9 @@ public class Hider extends Sprite {
 	
 	public void setScore(int score){
 		this.score = score;
+		if (getLives() != 0) {
+			score += 1;
+		}
 	}
 	public int getScore() {
 		return score;
