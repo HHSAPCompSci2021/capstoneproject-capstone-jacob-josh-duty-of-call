@@ -1,15 +1,12 @@
 package grid;
 
-import java.awt.Point;
 
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import gameplay.Hider;
 
 import gameplay.Seeker;
 import gameplay.SpecialPowers;
-import gameplay.Sprite;
 import processing.core.PApplet;
 import processing.core.PImage;
 //import processing.core.PImage;
@@ -29,6 +26,8 @@ public class DrawingSurface extends PApplet {
 	private Hider hider;
 	private Seeker seeker;
 	private SpecialPowers power;
+	
+	private String powerName;
 
 	private boolean play;
 	private boolean start;
@@ -138,7 +137,7 @@ public class DrawingSurface extends PApplet {
 			textAlign(LEFT);
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 			textAlign(RIGHT);
-			text("SPECIAL POWER: " + power.choosePower(), width - width / 40, height / 28);
+			text("SPECIAL POWER: " , width - width / 40, height / 28);
 			
 			if (hider.getX() >= 10 && hider.getX() <= width && hider.getY() >= 50 && hider.getY() <= height) {
 				timer = 120 - (System.currentTimeMillis() - timerStart) / 1000;
@@ -156,7 +155,7 @@ public class DrawingSurface extends PApplet {
 			if (hider.isTagged(seeker)) {
 				if(hider.getLives() == 0) {
 					gameOver = true;
-					timer = 300;
+					timer = 120;
 					hider.x = 30;
 					hider.y = 80;
 					seeker.x = width - 100;
@@ -165,7 +164,7 @@ public class DrawingSurface extends PApplet {
 				}
 			} else if(timer == 0) {
 				gameOver = true;
-				timer = 300;
+				timer = 120;
 				hider.setScore(50);
 			}
 				
@@ -202,8 +201,8 @@ public class DrawingSurface extends PApplet {
 	public void keyPressed() {
 		//moves hider using arrow keys if game is on play screen
 		if (play) {
-			if (keyCode == KeyEvent.VK_SPACE) {
-				//hider.usePower();
+			if (keyCode == KeyEvent.VK_SPACE && hider.getY()<height-70 && hider.getY()>62 && hider.getX() >20 && hider.getX() < width-50) {
+				hider.usePower();
 			} else if (keyCode == KeyEvent.VK_DOWN && hider.getY()<height-70) {
 				hider.move(0, 1);
 			} else if (keyCode == KeyEvent.VK_UP && hider.getY()>62) {
@@ -262,5 +261,6 @@ public class DrawingSurface extends PApplet {
 		}
 
 	}
+
 
 }

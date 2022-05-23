@@ -31,6 +31,7 @@ public class Hider extends Sprite {
 	private boolean invincible;
 	
 	private Map map;
+	private Seeker seeker;
 	
 	private String powerName;
 	
@@ -102,48 +103,59 @@ public class Hider extends Sprite {
 	
 	public void accelerate(int dirX, int dirY) {
 		if (dirX == 1) {
-			x+=5;
+			x+=20;
 		}
-		if (dirX == -1) {
-			x-=5;
-		}
+
 		if (dirY == 1) {
-			y+=5;
+			y+=20;
 		}
-		if (dirY == -1) {
-			y-=5;
-		}
+
 	}
 	
 
-	public String assignPowers() {
-		int i = (int)(Math.random()*3);
+//	public String assignPowers() {
+//		int i = (int)(Math.random()*3);
+//		
+//		if(power.choosePower(i) == "speed boost") {
+//			powerName = "speed boost";
+//		}
+//		else if(power.choosePower(i) == "taser stun") {
+//			powerName = "taser stun";
+//		}
+//		else if(power.choosePower(i) == "invincible") {
+//			powerName = "invincible";
+//		}
+//		return powerName;
+//	
+//	}
+	
+	public void usePower() {
+		if(choosePower() == "speed boost") {
+			speedBoost();
+		}
+		else if(choosePower() == "taser stun") {
+			taserStun();
+		}
+		else if(choosePower() == "invincible") {
+			invincible();
+		}
 		
-		if(power.choosePower(i) == "speed boost") {
-			powerName = "speed boost";
-		}
-		else if(power.choosePower(i) == "taser stun") {
-			powerName = "taser stun";
-		}
-		else if(power.choosePower(i) == "invincible") {
-			powerName = "invincible";
-		}
-		return powerName;
-	
 	}
 	
-	public boolean usePower() {
-
-		if(taserStun) {
-			return true;
-		}
-		if(wallPhase) {
-			return true;
-		}
-		if(invincible) {
-			return true;
-		}
-		return false;
+	public String choosePower() {
+//		int i =  (int)((Math.random() * 3)+1);
+		int i =1;
+		
+			if (i == 1) {
+				powerName = "speed boost";
+				//return "speed boost
+			} else if (i == 2) {
+				powerName = "taser stun";
+			} else if (i == 3) {
+				powerName = "invincible";
+			}
+		
+		return powerName;
 	}
 	
 	public boolean isTagged(Seeker other) {
@@ -187,6 +199,50 @@ public class Hider extends Sprite {
 	}
 	public int getDirection() {
 		return dir;
+	}
+	
+	/*
+	 * makes hider "invincible"
+	 */
+	public void invincible() {
+
+		new java.util.Timer().schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				if (isTagged(seeker)) {
+					extraLife();
+					// hider.isTagged(seeker) = false;
+				}
+			}
+		}, 5000);
+
+	}
+
+	/*
+	 * gives seeker faster movement speed
+	 */
+	public void speedBoost() {
+		new java.util.Timer().schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				accelerate(1, 1);
+			}
+		}, 5000);
+
+	}
+
+
+	/*
+	 * stuns seeker
+	 */
+	public void taserStun() {
+		new java.util.Timer().schedule(new java.util.TimerTask() {
+			@Override
+			public void run() {
+				seeker.move(0, 0);
+			}
+		}, 3000);
+
 	}
 
 	

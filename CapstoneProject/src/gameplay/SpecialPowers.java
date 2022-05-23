@@ -90,18 +90,18 @@ public class SpecialPowers {
 
 	}
 
-	public String choosePower() {
-		int i = (int) ((Math.random() * 3)+1);
-		
-			if (i == 1) {
-				powerName = "speed boost";
-				//return "speed boost
-			} else if (i == 2) {
-				powerName = "taser stun";
-			} else if (i == 3) {
-				powerName = "invincible";
-			}
-		
-		return powerName;
-	}
+//	public String choosePower() {
+//		int i =  (int)((Math.random() * 3)+1);
+//		
+//			if (i == 1) {
+//				powerName = "speed boost";
+//				//return "speed boost
+//			} else if (i == 2) {
+//				powerName = "taser stun";
+//			} else if (i == 3) {
+//				powerName = "invincible";
+//			}
+//		
+//		return powerName;
+//	}
 }
