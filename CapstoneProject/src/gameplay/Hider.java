@@ -29,6 +29,8 @@ public class Hider extends Sprite {
 	private boolean taserStun;
 	private boolean invisibility;
 	
+	private Map map;
+	
 	private PImage img;
 	
 	private int lives, score;
@@ -51,15 +53,16 @@ public class Hider extends Sprite {
 		if(getX() <= 1) {
 			x+=10;
 		}
-		if(getX() >= 799) {
+		if(getX() >= map.getWidth() - 51) {
 			y-=10;
 		}
 		if(getY() <= 1) {
 			y+=10;
 		}
-		if(getY() >= 599) {
+		if(getY() >= map.getHeight() - 101) {
 			y-=10;
 		}
+		
 		//setLocation(xBoundary, yBoundary);
 	}
 

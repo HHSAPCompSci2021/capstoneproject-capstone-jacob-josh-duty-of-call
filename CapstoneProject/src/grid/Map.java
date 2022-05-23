@@ -23,7 +23,7 @@ import processing.core.PApplet;
  */
 public class Map {
 	
-	//private int x,y;
+	private int x,y;
 	
 
 	public Map() {
@@ -36,6 +36,8 @@ public class Map {
 	 * @param drawer PApplet surface to draw Map on
 	 */
 	public void draw(PApplet drawer) {
+		x = drawer.width;
+		y = drawer.height;
 		drawer.fill(255);
 		drawer.rect(10, 50, drawer.width - 50, drawer.height - 100);
 		
@@ -45,28 +47,28 @@ public class Map {
 		drawer.rect(40, 190, 250, 100);
 		drawer.rect(320, 190, 500, 100);
 		drawer.rect(40, 320, 30, 200);
-		drawer.rect(40, 550, 200, 50);
+		drawer.rect(40, 550, 200, 40);
 		drawer.rect(320, 320, 500, 100);
 		drawer.rect(320, 500, 320, 90);
 		drawer.rect(320, 450, 500, 20);
 		drawer.rect(100, 320, 140, 200);
-		drawer.rect(270, 320, 20, 280);
+		drawer.rect(270, 320, 20, 270);
 		drawer.rect(670, 500, 150, 90);
 	}
 	
-//	public void setHeight(int x) {
-//		this.x = x;
-//	}
-//	public void setWidth(int y) {
-//		this.y = y;
-//	}
-//	
-//	
-//	public double getHeight() {
-//		return x;
-//	}
-//
-//	public double getWidth() {
-//		return y;
-//	}
+	public void setHeight(int x) {
+		this.x = x;
+	}
+	public void setWidth(int y) {
+		this.y = y;
+	}
+	
+	
+	public double getHeight() {
+		return y;
+	}
+
+	public double getWidth() {
+		return x;
+	}
 }

@@ -74,6 +74,15 @@ public class Sprite extends Rectangle2D.Double {
 			g.rect((float)x,(float)y,(float)width,(float)height);
 		}
 	}
+	
+	public boolean isCharacterInside(double x, double y) {
+		boolean pointInside = false;
+		if((this.getX() <= x && x <= this.getX() + width) && (this.getY() <= y && y <= this.getY() + height)) {
+			pointInside = true;
+			return pointInside;
+		}
+		return pointInside;
+	}
 //	public double getX() {
 //		return x;
 //	}
