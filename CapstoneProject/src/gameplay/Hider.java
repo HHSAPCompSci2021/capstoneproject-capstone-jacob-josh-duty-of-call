@@ -8,6 +8,7 @@
  */
 package gameplay;
 
+import java.awt.List;
 import java.util.ArrayList;
 
 import grid.Map;
@@ -48,19 +49,26 @@ public class Hider extends Sprite {
 		drawer.image(img, (float)x, (float)y, HIDER_WIDTH, HIDER_HEIGHT);
 	}
 	
-	public void act() {
-		if(getX() <= 1) {
-			x+=10;
+	public void act(List<Sprite>) {
+		for (Sprite x: obstacles) {
+			if (super.intersects(x)) {
+				move(0,0);
+			}
 		}
-		if(getX() >= map.getWidth() - 51) {
-			y-=10;
-		}
-		if(getY() <= 1) {
-			y+=10;
-		}
-		if(getY() >= map.getHeight() - 101) {
-			y-=10;
-		}
+		
+		
+//		if(getX() <= 1) {
+//			x+=10;
+//		}
+//		if(getX() >= map.getWidth() - 51) {
+//			y-=10;
+//		}
+//		if(getY() <= 1) {
+//			y+=10;
+//		}
+//		if(getY() >= map.getHeight() - 101) {
+//			y-=10;
+//		}
 		
 		//setLocation(xBoundary, yBoundary);
 	}
