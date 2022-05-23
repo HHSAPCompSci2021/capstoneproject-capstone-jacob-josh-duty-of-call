@@ -27,7 +27,7 @@ public class Hider extends Sprite {
 	private SpecialPowers speedBoost;
 	private boolean wallPhase;
 	private boolean taserStun;
-	private boolean invisibility;
+	private boolean invincible;
 	
 	private Map map;
 	
@@ -49,7 +49,6 @@ public class Hider extends Sprite {
 	}
 	
 	public void act() {
-		
 		if(getX() <= 1) {
 			x+=10;
 		}
@@ -120,7 +119,7 @@ public class Hider extends Sprite {
 		if(wallPhase) {
 			return true;
 		}
-		if(invisibility) {
+		if(invincible) {
 			return true;
 		}
 		return false;
