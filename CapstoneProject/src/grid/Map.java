@@ -13,6 +13,7 @@ package grid;
 import java.util.ArrayList;
 import java.util.List;
 
+import gameplay.Hider;
 import gameplay.Sprite;
 import processing.core.PApplet;
 
@@ -25,52 +26,56 @@ public class Map {
 	
 	private int x,y;
 	
-	private List<Sprite> boundaries;
+	private Hider hider;
+	private DrawingSurface surface;
+	
+//	protected static List<Sprite> boundaries;
 	
 
 	public Map(DrawingSurface surface) {
-		boundaries = new ArrayList<Sprite>();
-		boundaries.add(new Sprite(40, 80, 100, 80));
-		boundaries.add(new Sprite(40, 190, 250, 100));
-		boundaries.add(new Sprite(40, 320, 30, 200));
-		boundaries.add(new Sprite(40, 550, 200, 40));
-		
-		boundaries.add(new Sprite(170, 80, 500, 20));
-		boundaries.add(new Sprite(170, 140, 300, 20));
-		
-		boundaries.add(new Sprite(670, 80, 30, 150));
-		boundaries.add(new Sprite(730, 80, 20, 250));
-		
-		boundaries.add(new Sprite(100, 320, 140, 200));
-		boundaries.add(new Sprite(270, 320, 20, 270));
-		
-		boundaries.add(new Sprite(670, 500, 150, 90));
-		boundaries.add(new Sprite(780, 80, 40, 100));
-		boundaries.add(new Sprite(780, 210, 40, 120));
-		
-		boundaries.add(new Sprite(530, 140, 110, 90));
-		boundaries.add(new Sprite(470, 140, 30, 90));
-		
-		boundaries.add(new Sprite(320, 190, 120, 35));
-		boundaries.add(new Sprite(320, 255, 380, 35));
-		
-		boundaries.add(new Sprite(670, 360, 150, 30));
-		boundaries.add(new Sprite(670, 420, 30, 50));
-		boundaries.add(new Sprite(790, 420, 30, 50));
-		boundaries.add(new Sprite(700, 420, 90, 10));
-		
-		boundaries.add(new Sprite(320, 500, 150, 90));
-		boundaries.add(new Sprite(500, 470, 30, 120));
-		boundaries.add(new Sprite(610, 500, 30, 90));
-		boundaries.add(new Sprite(530, 580, 80, 10));
-
-		boundaries.add(new Sprite(320, 420, 210, 50));
-		boundaries.add(new Sprite(560, 330, 80, 140));
-		
-		boundaries.add(new Sprite(320, 320, 100, 20));
-		boundaries.add(new Sprite(320, 370, 100, 20));
-		boundaries.add(new Sprite(450, 320, 80, 70));
-		boundaries.add(new Sprite(530, 580, 80, 10));
+//		this.surface = surface;
+//		boundaries = new ArrayList<Sprite>();
+//		boundaries.add(new Sprite(40, 80, 100, 80));
+//		boundaries.add(new Sprite(40, 190, 250, 100));
+//		boundaries.add(new Sprite(40, 320, 30, 200));
+//		boundaries.add(new Sprite(40, 550, 200, 40));
+//		
+//		boundaries.add(new Sprite(170, 80, 500, 20));
+//		boundaries.add(new Sprite(170, 140, 300, 20));
+//		
+//		boundaries.add(new Sprite(670, 80, 30, 150));
+//		boundaries.add(new Sprite(730, 80, 20, 250));
+//		
+//		boundaries.add(new Sprite(100, 320, 140, 200));
+//		boundaries.add(new Sprite(270, 320, 20, 270));
+//		
+//		boundaries.add(new Sprite(670, 500, 150, 90));
+//		boundaries.add(new Sprite(780, 80, 40, 100));
+//		boundaries.add(new Sprite(780, 210, 40, 120));
+//		
+//		boundaries.add(new Sprite(530, 140, 110, 90));
+//		boundaries.add(new Sprite(470, 140, 30, 90));
+//		
+//		boundaries.add(new Sprite(320, 190, 120, 35));
+//		boundaries.add(new Sprite(320, 255, 380, 35));
+//		
+//		boundaries.add(new Sprite(670, 360, 150, 30));
+//		boundaries.add(new Sprite(670, 420, 30, 50));
+//		boundaries.add(new Sprite(790, 420, 30, 50));
+//		boundaries.add(new Sprite(700, 420, 90, 10));
+//		
+//		boundaries.add(new Sprite(320, 500, 150, 90));
+//		boundaries.add(new Sprite(500, 470, 30, 120));
+//		boundaries.add(new Sprite(610, 500, 30, 90));
+//		boundaries.add(new Sprite(530, 580, 80, 10));
+//
+//		boundaries.add(new Sprite(320, 420, 210, 50));
+//		boundaries.add(new Sprite(560, 330, 80, 140));
+//		
+//		boundaries.add(new Sprite(320, 320, 100, 20));
+//		boundaries.add(new Sprite(320, 370, 100, 20));
+//		boundaries.add(new Sprite(450, 320, 80, 70));
+//		boundaries.add(new Sprite(530, 580, 80, 10));
 		
 	}
 	
@@ -79,6 +84,13 @@ public class Map {
 	 * @param drawer PApplet surface to draw Map on
 	 */
 	public void draw(PApplet drawer) {
+		
+//		for (Sprite s : boundaries) {
+//			s.draw(surface);
+//		}
+		
+		
+		//hider.act(boundaries);
 		x = drawer.width;
 		y = drawer.height;
 		drawer.fill(255);
@@ -129,7 +141,6 @@ public class Map {
 		drawer.rect(320, 370, 100, 20);
 		drawer.rect(450, 320, 80, 70);
 		drawer.rect(530, 580, 80, 10);
-		
 	}
 	
 	public void setHeight(int x) {

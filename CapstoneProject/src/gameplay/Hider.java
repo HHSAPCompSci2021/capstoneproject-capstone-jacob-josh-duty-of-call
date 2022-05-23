@@ -8,7 +8,7 @@
  */
 package gameplay;
 
-import java.awt.List;
+import java.util.List;
 import java.util.ArrayList;
 
 import grid.Map;
@@ -25,14 +25,14 @@ public class Hider extends Sprite {
 	public static final int HIDER_WIDTH = 30;
 	public static final int HIDER_HEIGHT = 30;
 	
-	private SpecialPowers speedBoost;
+	private SpecialPowers power;
 	private boolean wallPhase;
 	private boolean taserStun;
 	private boolean invincible;
 	
 	private Map map;
 	
-	private SpecialPowers powers;
+	private String powerName;
 	
 	private PImage img;
 	
@@ -45,7 +45,8 @@ public class Hider extends Sprite {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
 		this.img = img;
 		lives = 1;
-		powers = null;
+		//powers = null;
+		
 		
 	}
 	
@@ -53,12 +54,13 @@ public class Hider extends Sprite {
 		drawer.image(img, (float)x, (float)y, HIDER_WIDTH, HIDER_HEIGHT);
 	}
 	
-	public void act() {
-//		for (Sprite x: obstacles) {
-//			if (super.intersects(x)) {
-//				move(0,0);
-//			}
-//		}
+	public boolean isTouching(List<Sprite> boundaries) {
+		for (Sprite s: boundaries) {
+			if (s.contains(this.x, this.y)) {
+				return true;
+			}
+		}
+		return false;
 		
 		
 //		if(getX() <= 1) {
@@ -97,9 +99,6 @@ public class Hider extends Sprite {
 		
 	}
 	
-	public SpecialPowers getPower() {
-		return powers; 
-	}
 	
 	public void accelerate(int dirX, int dirY) {
 		if (dirX == 1) {
@@ -117,13 +116,20 @@ public class Hider extends Sprite {
 	}
 	
 
-	public void assignPowers() {
+	public String assignPowers() {
+		int i = (int)(Math.random()*3);
 		
+		if(power.choosePower(i) == "speed boost") {
+			powerName = "speed boost";
+		}
+		else if(power.choosePower(i) == "taser stun") {
+			powerName = "taser stun";
+		}
+		else if(power.choosePower(i) == "invincible") {
+			powerName = "invincible";
+		}
+		return powerName;
 	
-	}
-	
-	public String getPowers() {
-		return null;
 	}
 	
 	public boolean usePower() {
@@ -155,12 +161,11 @@ public class Hider extends Sprite {
 	public void loseLife() {
 		lives--;
 	}
-	
-	public void setScore(int score){
+	public void extraLife() {
+		lives++;
+	}
+	public void setScore(int score) {
 		this.score = score;
-		if (getLives() != 0) {
-			score += 1;
-		}
 	}
 	public int getScore() {
 		return score;

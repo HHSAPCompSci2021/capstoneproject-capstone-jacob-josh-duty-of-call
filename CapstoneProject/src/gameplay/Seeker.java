@@ -49,12 +49,12 @@ public class Seeker extends Sprite {
 		}
 	}
 
-	public int peopleTagged(Hider other) {
-		if (this.intersects(other)) {
-			this.tagged += 1;
-		}
-		return this.tagged;
-	}
+//	public int peopleTagged(Hider other) {
+//		if (this.intersects(other)) {
+//			this.tagged += 1;
+//		}
+//		return this.tagged;
+//	}
 
 	public double getX() {
 		return super.getX();
@@ -65,7 +65,7 @@ public class Seeker extends Sprite {
 	}
 
 	public void setScore(int score) {
-		score+= (peopleTagged(hider)*100);
+		//score+= (peopleTagged(hider)*100);
 		this.score = score;
 	}
 

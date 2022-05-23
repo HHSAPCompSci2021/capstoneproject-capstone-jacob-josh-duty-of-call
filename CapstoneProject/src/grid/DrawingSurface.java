@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import gameplay.Hider;
 
 import gameplay.Seeker;
+import gameplay.SpecialPowers;
 import gameplay.Sprite;
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -27,6 +28,7 @@ public class DrawingSurface extends PApplet {
 	// private Sprite sprite;
 	private Hider hider;
 	private Seeker seeker;
+	private SpecialPowers power;
 
 	private boolean play;
 	private boolean start;
@@ -124,7 +126,7 @@ public class DrawingSurface extends PApplet {
 		//switches to play screen if play now button is clicked
 		if (play) {
 			background(255);
-
+			
 			if (map != null) {
 				map.draw(this);
 				hider.draw(this);
@@ -136,7 +138,7 @@ public class DrawingSurface extends PApplet {
 			textAlign(LEFT);
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 			textAlign(RIGHT);
-			text("SPECIAL POWER: " + hider.getPower(), width - width / 40, height / 28);
+			text("SPECIAL POWER: " + power.choosePower(), width - width / 40, height / 28);
 			
 			if (hider.getX() >= 10 && hider.getX() <= width && hider.getY() >= 50 && hider.getY() <= height) {
 				timer = 120 - (System.currentTimeMillis() - timerStart) / 1000;
@@ -148,18 +150,19 @@ public class DrawingSurface extends PApplet {
 			timerMessage = "TIME LEFT: " + timer + " seconds";
 			
 			
-			
 			text(timerMessage, (float)0.9*width, (float)0.95*height);
 			
 			
 			if (hider.isTagged(seeker)) {
-				gameOver = true;
-				timer = 300;
-				hider.x = 30;
-				hider.y = 80;
-				seeker.x = width - 100;
-				seeker.y = height - 100;
-				seeker.setScore(100);
+				if(hider.getLives() == 0) {
+					gameOver = true;
+					timer = 300;
+					hider.x = 30;
+					hider.y = 80;
+					seeker.x = width - 100;
+					seeker.y = height - 100;
+					seeker.setScore(100);
+				}
 			} else if(timer == 0) {
 				gameOver = true;
 				timer = 300;
