@@ -196,10 +196,20 @@ public class Map {
 		return x;
 	}
 	
-	public boolean hitBoundaries(Hider hider) {
+//	public boolean withinBound(Hider hider) {
+//		boolean hiderInBounds = true;
+//		for(int i = 0; i < boundaries.size(); i++) {
+//			if((hider.getX() >= boundaries.get(i).x && hider.getX() <= boundaries.get(i).x + boundaries.get(i).getWidth()) && (hider.getY() >= boundaries.get(i).y && hider.getY() <= boundaries.get(i).y + boundaries.get(i).getHeight())) {
+//				hiderInBounds = false;
+//				return hiderInBounds;
+//			}
+//		}
+//		return hiderInBounds;
+	
+	public boolean isNextValid(double x, double y) {
 		boolean hiderInBounds = true;
 		for(int i = 0; i < boundaries.size(); i++) {
-			if((hider.getX() >= boundaries.get(i).x && hider.getX() <= boundaries.get(i).x + boundaries.get(i).getWidth()) && (hider.getY() >= boundaries.get(i).y && hider.getY() <= boundaries.get(i).y + boundaries.get(i).getHeight())) {
+			if((x >= boundaries.get(i).x && x <= boundaries.get(i).x + boundaries.get(i).getWidth()) && (y >= boundaries.get(i).y && y <= boundaries.get(i).y + boundaries.get(i).getHeight())) {
 				hiderInBounds = false;
 				return hiderInBounds;
 			}

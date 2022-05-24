@@ -33,7 +33,7 @@ public class Hider extends Sprite {
 	private Map map;
 	private Seeker seeker;
 	
-	private int xVel, yVel;
+	private int xVel =1, yVel = 1;
 	
 	private String powerName;
 	
@@ -87,8 +87,8 @@ public class Hider extends Sprite {
  * 
  */
 	public void move(int x, int y) {
-		this.x+=x+xVel;
-		this.y+=y+yVel;
+		this.x+=(x*xVel);
+		this.y+=(y*yVel);
 		
 	}
 	
@@ -215,16 +215,16 @@ public class Hider extends Sprite {
 //			@Override
 //			public void run() {
 		if (this.getDirection() == 0) {
-				accelerate(20, 0);
+				accelerate(0, 3);
 		}
 		if (this.getDirection() == 180 ) {
-			accelerate(20, 0);
+			accelerate(0, 3);
 	}
 		if (this.getDirection() == 90 ) {
-			accelerate(0, 20);
+			accelerate(3, 0);
 	}
 		if (this.getDirection() == 270 ) {
-			accelerate(0, 20);
+			accelerate(3, 0);
 	}
 		
 		
