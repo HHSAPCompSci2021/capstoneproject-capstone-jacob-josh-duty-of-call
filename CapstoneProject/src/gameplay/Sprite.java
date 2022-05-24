@@ -7,9 +7,9 @@ import processing.core.PImage;
 
 /**
  * Sprite represents all the characters
- * @version 5/10/22
+ * @version 5/24/22
  * 
- * @author Joshua Lee
+ * @author Joshua Lee and Jacob Tang
  *
  */
 
@@ -75,17 +75,4 @@ public class Sprite extends Rectangle2D.Double {
 		}
 	}
 	
-//	public double getX() {
-//		return x;
-//	}
-//	public void setX(double xCoord) {
-//		xCoord = x;
-//	}
-//	
-//	public double getY() {
-//		return y;
-//	}
-//	public void setY(double yCoord) {
-//		yCoord = y;
-//	}
 }
