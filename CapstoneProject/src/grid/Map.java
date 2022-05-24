@@ -35,7 +35,10 @@ public class Map {
 	
 	private Color color;
 	
-
+/**
+ * creates a new map with boundaries
+ * @param surface Drawing surface to draw on
+ */
 	public Map(DrawingSurface surface) {
 //		this.surface = surface;
 		boundaries = new ArrayList<Sprite>();

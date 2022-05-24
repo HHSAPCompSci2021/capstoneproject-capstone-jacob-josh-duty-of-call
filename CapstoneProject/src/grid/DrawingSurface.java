@@ -214,39 +214,7 @@ public class DrawingSurface extends PApplet {
 	public void keyPressed() {
 		//moves hider using arrow keys if game is on play screen
 		if (play) {
-//			if(map.withinBound(hider)==false) {
-//				
-////				hider.move(0,0);
-//				System.out.println("hit boundary");
-//				
-//			}
-//			if (keyCode == KeyEvent.VK_SPACE && hider.getY()<=height-70 && hider.getY()>=62 && hider.getX() >=20 && hider.getX() <= width-50) {
-//				hider.usePower();
-//			} else if (keyCode == KeyEvent.VK_DOWN && hider.getY()<height-70 && map.isNextValid(hider.getX(), hider.getY()+10) == true) {
-//				hider.move(0, 10);
-//				hider.setDirection(180);
-//			} else if (keyCode == KeyEvent.VK_UP && hider.getY()>62 && map.isNextValid(hider.getX(), hider.getY()-10) == true) {
-//				hider.move(0, -10);
-//				hider.setDirection(0);
-//			} else if (keyCode == KeyEvent.VK_LEFT && hider.getX() >20 && map.isNextValid(hider.getX()-10, hider.getY()) == true) {
-//				hider.move(-10, 0);
-//				hider.setDirection(270);
-//			} else if (keyCode == KeyEvent.VK_RIGHT && hider.getX() < width-50 && map.isNextValid(hider.getX()+10, hider.getY()) == true) {
-//				hider.move(10, 0);
-//				hider.setDirection(90);
-//			} else if (keyCode == KeyEvent.VK_S && seeker.getY()<height-69 && map.isNextValid(seeker.getX(), seeker.getY()+10) == true) {
-//				seeker.move(0, 10);
-//				seeker.setDirection(180);
-//			} else if (keyCode == KeyEvent.VK_W && seeker.getY()>60 && map.isNextValid(seeker.getX(), seeker.getY()-10) == true ) {
-//				seeker.move(0, -10);
-//				seeker.setDirection(0);
-//			} else if (keyCode == KeyEvent.VK_A && seeker.getX() >20 && map.isNextValid(seeker.getX()-10, seeker.getY()) == true) {
-//				seeker.move(-10, 0);
-//				seeker.setDirection(270);
-//			} else if (keyCode == KeyEvent.VK_D && seeker.getX() < width-60 && map.isNextValid(seeker.getX()+10, seeker.getY()) == true) {
-//				seeker.move(10, 0);
-//				seeker.setDirection(90);
-//			}
+
 			
 			if (keyCode == KeyEvent.VK_SPACE && map.inBounds(hider.getX(), hider.getY()) == true) {
 				hider.usePower();
