@@ -1,11 +1,3 @@
-/**
- * Hider represents hider in the game
-
- * @version 5/10/22
- * 
- * @author Jacob Tang
- *
- */
 package gameplay;
 
 import java.util.List;
@@ -15,10 +7,17 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
+ * Hider represents hider in the game
+
+
+ * @version 5/10/22
  * 
- * Instantiates a hider that inherits the qualities of a Sprite
+ * @author Jacob Tang
  *
  */
+
+
+
 public class Hider extends Sprite {
 
 	public static final int HIDER_WIDTH = 30;
@@ -47,15 +46,15 @@ public class Hider extends Sprite {
 	private int numTeleports;
 	private int numBoosts;
 	private int numStuns;
-	private long boostTime;
+	private int reborns;
 
 	/**
-	 * 
-	 * @param img
-	 * @param x
-	 * @param y
-	 * @param s
-	 * @param m
+	 * Instantiates a hider that inherits the qualities of a Sprite
+	 * @param img PImage of hider
+	 * @param x x coordinate of hider
+	 * @param y y coordinate of hider
+	 * @param s seeker 
+	 * @param m map
 	 */  
 	public Hider(PImage img, int x, int y, Seeker s, Map m) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
@@ -66,12 +65,22 @@ public class Hider extends Sprite {
 		numTeleports = 2;
 		numBoosts = 1;
 		numStuns = 2;
+		reborns = 1;
 	}
 
+	/**
+	 * Draws the hider with coordinates (x,y) on the PApplet
+	 * @param drawer PApplet drawer the hider is drawn on
+	 */
 	public void draw(PApplet drawer) {
 		drawer.image(img, (float) x, (float) y, HIDER_WIDTH, HIDER_HEIGHT);
 	}
 
+	/**
+	 * Determines if the hider is touching any boundaries
+	 * @param boundaries ArrayList of boundaries in map
+	 * @return true if the hider is touching the boundaries, false otherwise
+	 */
 	public boolean isTouching(List<Sprite> boundaries) {
 		for (Sprite s : boundaries) {
 			if (s.contains(this.x, this.y)) {
@@ -84,7 +93,8 @@ public class Hider extends Sprite {
 
 	/**
 	 * Overrides the move method and describes how the hider moves
-	 * 
+	 * @param x length of x coordinate the hider is going to move by
+	 * @param y length of y coordinate the hider is going to move by
 	 */
 	public void move(int x, int y) {
 		this.x += (x * xVel);
@@ -96,7 +106,9 @@ public class Hider extends Sprite {
 	}
 
 	/**
-	 * Increases velocity of hider increases move distance of hider
+	 * Increases velocity of hider which increases move distance of hider
+	 * @param xVel x velocity of the hider
+	 * @param yVel y velocity of the hider
 	 */
 	public void accelerate(double xVel, double yVel) {
 		this.xVel += xVel;
@@ -111,7 +123,6 @@ public class Hider extends Sprite {
 	public void usePower() {
 		if (namePower() == "speed boost") {
 			speedBoost();
-			boostTime = System.currentTimeMillis();
 		} else if (namePower() == "taser stun") {
 			taserStun();
 		} else if (namePower() == "reborn") {
@@ -128,9 +139,8 @@ public class Hider extends Sprite {
 	 */
 	public String choosePower() {
 		
-		//int i =  (int)((Math.random() * 3)+1);
-		int i = 1;
-
+		int i =  (int)((Math.random() * 3)+1);
+	
 		if (i == 1) {
 			powerName = "speed boost";
 		} else if (i == 2) {
@@ -166,7 +176,14 @@ public class Hider extends Sprite {
 	}
 
 	/**
-	 * returns the amount of lives the hider has
+	 * Sets the amount of lives the hider has
+	 * @param lives of hider
+	 */
+	public void setLives(int lives) {
+		this.lives = lives;
+	}
+	/**
+	 * Gets the amount of lives the hider has
 	 * @return lives of hider
 	 */
 	public int getLives() {
@@ -273,8 +290,11 @@ public class Hider extends Sprite {
 	 * Gifts hider an extra life
 	 */
 	public void reborn() {
+		if(reborns == 0) {
+			this.setLives(1);
+		}
 		extraLife();
-		
+		reborns--;
 		
 	}
 	
@@ -308,29 +328,32 @@ public class Hider extends Sprite {
 	 * Hider accelerates as movement speeds up
 	 */
 	public void speedBoost() {
-		
-			if(numBoosts==0) {
-				System.out.println("stop boosting");
-				return;
+			
+			if(numBoosts == 0) {
+				if (this.getDirection() == up) {
+					accelerate(0, -1.2);
+				}
+				if (this.getDirection() == down) {
+					accelerate(0, -1.2);
+				}
+				if (this.getDirection() == right) {
+					accelerate(-1.2, 0);
+				}
+				if (this.getDirection() == left) {
+					accelerate(-1.2, 0);
+				}
 			}
-			if (this.getDirection() == up && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
-				System.out.println("boost");
+			if (this.getDirection() == up) {
 				accelerate(0, 1.2);
 			}
-			if (this.getDirection() == down && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
-				System.out.println("boost");
+			if (this.getDirection() == down) {
 				accelerate(0, 1.2);
 			}
-			if (this.getDirection() == right && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
-				System.out.println("boost");
+			if (this.getDirection() == right) {
 				accelerate(1.2, 0);
 			}
-			if (this.getDirection() == left && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
-				System.out.println("boost");
+			if (this.getDirection() == left) {
 				accelerate(1.2, 0);
-			}
-			if((System.currentTimeMillis()-boostTime) >= 3000) {
-				System.out.println("no acceleration");
 			}
 			numBoosts--;
 		

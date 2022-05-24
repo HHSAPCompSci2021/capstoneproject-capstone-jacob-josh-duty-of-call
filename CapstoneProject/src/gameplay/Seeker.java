@@ -29,8 +29,11 @@ public class Seeker extends Sprite {
 	private int dir;
 	private long timeTazed = -1;
 
-	/*
-	 * creates a seeker that extends a sprite
+	/**
+	 * Instantiates a seeker that inherits the qualities of a Sprite
+	 * @param img PImage of seeker
+	 * @param x x coordinate of seeker
+	 * @param y y coordinate of seeker
 	 */
 	public Seeker(PImage img, int x, int y) {
 		super(img, x, y, SEEKER_WIDTH, SEEKER_HEIGHT);
@@ -38,7 +41,7 @@ public class Seeker extends Sprite {
 	}
 
 	/**
-	 * draws the seeker on the PApplet
+	 * Draws the seeker with coordinates (x,y) on the PApplet
 	 * @param drawer PApplet drawer the seeker is drawn on
 	 */
 	public void draw(PApplet drawer) {
@@ -50,7 +53,7 @@ public class Seeker extends Sprite {
 	 */
 	
 	/**
-	 * controls the movement of the seeker
+	 * Describes the movement of the seeker
 	 * @param x amount moved to the right or left
 	 * @param y amount moved up or down
 	 */
@@ -67,28 +70,28 @@ public class Seeker extends Sprite {
 	}
 
 	/**
-	 * calculates the time that the seeker has been tazed
+	 * Calculates the time that the seeker has been tazed
 	 */
 	public void taze() {
 		timeTazed = System.currentTimeMillis();
 	}
 
 	/**
-	 * returns the x coordinate of the seeker
+	 * Returns the x coordinate of the seeker
 	 */
 	public double getX() {
 		return this.x;
 	}
 
 	/**
-	 * returns the y coordinate of the seeker
+	 * Returns the y coordinate of the seeker
 	 */
 	public double getY() {
 		return this.y;
 	}
 
 	/**
-	 * sets the score of the seeker
+	 * Sets the score of the seeker
 	 * @param score the score of the seeker
 	 */
 	public void setScore(int score) {
@@ -97,7 +100,7 @@ public class Seeker extends Sprite {
 	}
 
 	/**
-	 * gets the score of the seeker
+	 * Gets the score of the seeker
 	 * @return score of the seeker
 	 */
 	public int getScore() {
@@ -105,7 +108,7 @@ public class Seeker extends Sprite {
 	}
 	
 	/**
-	 * sets the direction of the seeker
+	 * Sets the direction of the seeker
 	 * @param direction the degree and direction the seeker is facing
 	 */
 	public void setDirection(int direction) {
@@ -113,7 +116,7 @@ public class Seeker extends Sprite {
 	}
 	
 	/**
-	 * returns the direction of the seeker
+	 * Returns the direction of the seeker
 	 * @return dir the direction of the seeker
 	 */
 	public int getDirection() {
