@@ -6,7 +6,6 @@ import java.awt.event.KeyEvent;
 import gameplay.Hider;
 
 import gameplay.Seeker;
-import gameplay.SpecialPowers;
 import processing.core.PApplet;
 import processing.core.PImage;
 //import processing.core.PImage;
@@ -25,7 +24,6 @@ public class DrawingSurface extends PApplet {
 	// private Sprite sprite;
 	private Hider hider;
 	private Seeker seeker;
-	private SpecialPowers power;
 	
 	private String powerName;
 

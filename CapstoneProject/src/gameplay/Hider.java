@@ -25,10 +25,7 @@ public class Hider extends Sprite {
 	public static final int HIDER_WIDTH = 30;
 	public static final int HIDER_HEIGHT = 30;
 
-	private SpecialPowers power;
-	private boolean wallPhase;
-	private boolean taserStun;
-	private boolean invincible;
+
 	public double xfinal, yfinal;
 
 	private Map map;
@@ -57,7 +54,7 @@ public class Hider extends Sprite {
 	 * @param y
 	 * @param s
 	 * @param m
-	 */
+	 */  
 	public Hider(PImage img, int x, int y, Seeker s, Map m) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
 		this.img = img;
