@@ -9,11 +9,10 @@
 
 package grid;
 
-import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import gameplay.Hider;
 import gameplay.Sprite;
 import processing.core.PApplet;
 
@@ -29,13 +28,9 @@ public class Map {
 
 	private int x, y;
 
-	private Hider hider;
-	private DrawingSurface surface;
-
 	private List<Sprite> boundaries;
 	private List<Sprite> outline;
 
-	private Color color;
 
 	/**
 	 * creates a new map with boundaries

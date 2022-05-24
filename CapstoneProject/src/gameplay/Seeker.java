@@ -23,9 +23,8 @@ public class Seeker extends Sprite {
 
 	public static final int SEEKER_WIDTH = 30;
 	public static final int SEEKER_HEIGHT = 30;
-	private int score, tagged;
+	private int score;
 	private PImage img;
-	private Hider hider;
 	public double xfinal, yfinal;
 	private int dir;
 	private long timeTazed = -1;
