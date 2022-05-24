@@ -273,7 +273,7 @@ public class DrawingSurface extends PApplet {
 			if(mouseX > width/2 - width/3 && mouseX < width/2 + width/3 && mouseY > height/2 + height/3 - height/7 && mouseY < height/2 + height/3 + height/7){
 				gameOver = false;
 				start = true;
-				
+				hider.extraLife();
 			}
 		}
 
