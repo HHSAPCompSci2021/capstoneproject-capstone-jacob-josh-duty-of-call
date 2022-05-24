@@ -174,7 +174,7 @@ public class Map {
 
 
 	/**
-	 * tests whether the next point is a valid point and is not in the boundaries
+	 * Tests whether the next point is a valid point and is not in the boundaries set within the map
 	 * @param x x coordinate of the next move
 	 * @param y y coordinate of the next move
 	 * @return true if the point is a valid point false otherwise
@@ -193,7 +193,7 @@ public class Map {
 	}
 
 	/**
-	 * tests whether the next point is in the boundaries
+	 * Tests whether the next point is within the boundaries of the map
 	 * @param x x coordinate of the next move
 	 * @param y y coordinate of the next move
 	 * @return true if the hider is in bound false otherwise

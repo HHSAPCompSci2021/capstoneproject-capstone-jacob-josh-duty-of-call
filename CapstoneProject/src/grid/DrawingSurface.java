@@ -159,6 +159,8 @@ public class DrawingSurface extends PApplet {
 					seeker.x = width - 70;
 					seeker.y = height - 70;
 					seeker.setScore(100);
+					hider.setLives(1);
+					hider.choosePower();
 				}
 			} else if(timer == 0) {
 				gameOver = true;
@@ -169,6 +171,8 @@ public class DrawingSurface extends PApplet {
 				seeker.x = width - 70;
 				seeker.y = height - 70;
 				hider.setScore(50);
+				hider.setLives(1);
+				hider.choosePower();
 			}
 				
 		}	
