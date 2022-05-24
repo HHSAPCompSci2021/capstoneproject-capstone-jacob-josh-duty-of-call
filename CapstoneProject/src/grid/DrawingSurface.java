@@ -111,9 +111,9 @@ public class DrawingSurface extends PApplet {
 
 			textSize(20);
 			textAlign(LEFT);
-			text("- As a seeker, the objective of the game is to tag all the hiders.\n- The objective of the hiders is to avoid getting tagged until the 5 minute\ntimer is up.\n- Each hider receives one superpower that can be used multiple times\nper game, but has a cooldown after every use.",
+			text("- As a seeker, the objective of the game is to tag the hider.\n- The objective of the hider is to avoid getting tagged until the 2 minute\ntimer is up.\n- The hider receives one random superpower that can be used during \nthe game, but has a cooldown or a max amount of uses.",
 					20, height / 4);
-			text("\n\n\n\n\n- Use the WASD keys to move around.\n- Press space bar to use special powers\n- If tagged, hider will return to a game over screen which will serve as a\nwaiting room until the next game can be played.",
+			text("\n\n\n\n\n- Use the arrow keys to move around for hider. Use WASD to move around for seeker. \n- (Need to spam buttons to move) \n- Press space bar to use special powers\n- If tagged, hider and seeker will return to a game over screen and will be able to \nplay again with their score shown on the screen.",
 					20, height / 4);
 		}
 
