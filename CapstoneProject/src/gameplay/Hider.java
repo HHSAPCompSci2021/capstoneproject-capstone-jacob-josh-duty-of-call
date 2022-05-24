@@ -315,19 +315,19 @@ public class Hider extends Sprite {
 			}
 			if (this.getDirection() == up && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
 				System.out.println("boost");
-				accelerate(0, 2);
+				accelerate(0, 1.2);
 			}
 			if (this.getDirection() == down && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
 				System.out.println("boost");
-				accelerate(0,2);
+				accelerate(0, 1.2);
 			}
 			if (this.getDirection() == right && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
 				System.out.println("boost");
-				accelerate(2, 0);
+				accelerate(1.2, 0);
 			}
 			if (this.getDirection() == left && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
 				System.out.println("boost");
-				accelerate(2, 0);
+				accelerate(1.2, 0);
 			}
 			if((System.currentTimeMillis()-boostTime) >= 3000) {
 				System.out.println("no acceleration");
