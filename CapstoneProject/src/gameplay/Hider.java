@@ -17,7 +17,6 @@ import processing.core.PImage;
  */
 
 
-
 public class Hider extends Sprite {
 
 	public static final int HIDER_WIDTH = 30;
