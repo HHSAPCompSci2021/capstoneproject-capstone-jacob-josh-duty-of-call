@@ -50,6 +50,14 @@ public class Hider extends Sprite {
 	private int dir;
 	private int numTeleports;
 
+	/**
+	 * 
+	 * @param img
+	 * @param x
+	 * @param y
+	 * @param s
+	 * @param m
+	 */
 	public Hider(PImage img, int x, int y, Seeker s, Map m) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
 		this.img = img;
