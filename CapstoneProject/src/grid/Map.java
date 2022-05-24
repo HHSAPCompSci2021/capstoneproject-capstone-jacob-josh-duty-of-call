@@ -31,6 +31,7 @@ public class Map {
 	private DrawingSurface surface;
 	
 	private List<Sprite> boundaries;
+	private List<Sprite> outline;
 	
 	private Color color;
 	
@@ -78,6 +79,9 @@ public class Map {
 		boundaries.add(new Sprite(320, 320, 100, 20));
 		boundaries.add(new Sprite(320, 370, 100, 20));
 		boundaries.add(new Sprite(450, 320, 80, 70));
+		
+		outline = new ArrayList<Sprite>();
+		outline.add(new Sprite(10, 50, surface.width-50, surface.height-100));
 	
 	}
 	
@@ -207,18 +211,31 @@ public class Map {
 //		return hiderInBounds;
 	
 	public boolean isNextValid(double x, double y) {
-		boolean hiderInBounds = true;
+		boolean nextIn = true;
 		for(int i = 0; i < boundaries.size(); i++) {
 			if((x >= boundaries.get(i).x && x <= boundaries.get(i).x + boundaries.get(i).getWidth()) && (y >= boundaries.get(i).y && y <= boundaries.get(i).y + boundaries.get(i).getHeight())) {
-				hiderInBounds = false;
-				return hiderInBounds;
+				nextIn = false;
+				return nextIn;
 			}
 		}
-		return hiderInBounds;
+		return nextIn;
 		
 //		int c = boundaries.get(0);
 //		if(c == surface.color(100)) {
 //			return true;
 //		}
+	}
+	
+	public boolean inBounds(double x, double y) {
+		boolean hiderInBound = false;
+		for(int i = 0; i < outline.size(); i++) {
+			if((x >= outline.get(i).x && x <= outline.get(i).x + outline.get(i).getWidth()) && (y >= outline.get(i).y && y <= outline.get(i).y + outline.get(i).getHeight())) {
+				hiderInBound = true;
+				return hiderInBound;
+			}
+		}
+		return hiderInBound;
+
+		
 	}
 }

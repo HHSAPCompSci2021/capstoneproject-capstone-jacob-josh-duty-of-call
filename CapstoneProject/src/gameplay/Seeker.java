@@ -18,6 +18,8 @@ public class Seeker extends Sprite {
 	private int score, tagged;
 	private PImage img;
 	private Hider hider;
+	public double xfinal, yfinal;
+	private int dir;
 
 	/*
 	 * creates a seeker that extends a sprite
@@ -37,6 +39,9 @@ public class Seeker extends Sprite {
 	public void move(int x, int y) {
 		this.x+=x;
 		this.y+=y;
+		
+		xfinal = this.x;
+		yfinal = this.y;
 		
 	}
 
@@ -62,5 +67,11 @@ public class Seeker extends Sprite {
 
 	public int getScore() {
 		return score;
+	}
+	public void setDirection(int direction) {
+		this.dir = direction;
+	}
+	public int getDirection() {
+		return dir;
 	}
 }
