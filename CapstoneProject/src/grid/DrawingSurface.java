@@ -161,6 +161,7 @@ public class DrawingSurface extends PApplet {
 					seeker.setScore(100);
 					hider.setLives(1);
 					hider.choosePower();
+					hider.resetPowers();
 				}
 			} else if(timer == 0) {
 				gameOver = true;
@@ -173,6 +174,7 @@ public class DrawingSurface extends PApplet {
 				hider.setScore(50);
 				hider.setLives(1);
 				hider.choosePower();
+				hider.resetPowers();
 			}
 				
 		}	

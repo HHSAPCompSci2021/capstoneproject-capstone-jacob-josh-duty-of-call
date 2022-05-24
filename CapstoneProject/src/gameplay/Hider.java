@@ -297,6 +297,13 @@ public class Hider extends Sprite {
 		
 	}
 	
+	public void resetPowers() {
+		numTeleports = 2;
+		numBoosts = 1;
+		reborns = 1;
+		numStuns = 2;
+	}
+	
 	/**
 	 * Teleports the hider to a random valid location on the map
 	 */
