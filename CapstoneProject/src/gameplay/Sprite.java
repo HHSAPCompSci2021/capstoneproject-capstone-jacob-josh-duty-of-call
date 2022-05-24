@@ -7,9 +7,9 @@ import processing.core.PImage;
 
 /**
  * Sprite represents all the characters
- * @version 5/10/22
+ * @version 5/24/22
  * 
- * @author Joshua Lee
+ * @author Joshua Lee and Jacob Tang
  *
  */
 
