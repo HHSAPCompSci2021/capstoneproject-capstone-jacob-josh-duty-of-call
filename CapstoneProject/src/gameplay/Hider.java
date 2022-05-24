@@ -45,6 +45,9 @@ public class Hider extends Sprite {
 
 	private int dir;
 	private int numTeleports;
+	private int numBoosts;
+	private int numStuns;
+	private long boostTime;
 
 	/**
 	 * 
@@ -60,8 +63,9 @@ public class Hider extends Sprite {
 		lives = 1;
 		seeker = s;
 		map = m;
-		numTeleports = 1;
-
+		numTeleports = 2;
+		numBoosts = 1;
+		numStuns = 2;
 	}
 
 	public void draw(PApplet drawer) {
@@ -107,6 +111,7 @@ public class Hider extends Sprite {
 	public void usePower() {
 		if (namePower() == "speed boost") {
 			speedBoost();
+			boostTime = System.currentTimeMillis();
 		} else if (namePower() == "taser stun") {
 			taserStun();
 		} else if (namePower() == "reborn") {
@@ -124,7 +129,7 @@ public class Hider extends Sprite {
 	public String choosePower() {
 		
 		//int i =  (int)((Math.random() * 3)+1);
-		int i = 3;
+		int i = 1;
 
 		if (i == 1) {
 			powerName = "speed boost";
@@ -303,30 +308,47 @@ public class Hider extends Sprite {
 	 * Hider accelerates as movement speeds up
 	 */
 	public void speedBoost() {
-		if (this.getDirection() == up) {
-			accelerate(0, 1.2);
-		}
-		if (this.getDirection() == down) {
-			accelerate(0, 1.2);
-		}
-		if (this.getDirection() == right) {
-			accelerate(1.2, 0);
-		}
-		if (this.getDirection() == left) {
-			accelerate(1.2, 0);
-		}
-
+		
+			if(numBoosts==0) {
+				System.out.println("stop boosting");
+				return;
+			}
+			if (this.getDirection() == up && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
+				System.out.println("boost");
+				accelerate(0, 1.2);
+			}
+			if (this.getDirection() == down && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
+				System.out.println("boost");
+				accelerate(0, 1.2);
+			}
+			if (this.getDirection() == right && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
+				System.out.println("boost");
+				accelerate(1.2, 0);
+			}
+			if (this.getDirection() == left && boostTime >= 0 && (System.currentTimeMillis()-boostTime) <= 3000) {
+				System.out.println("boost");
+				accelerate(1.2, 0);
+			}
+			if((System.currentTimeMillis()-boostTime) >= 3000) {
+				System.out.println("no acceleration");
+			}
+			numBoosts--;
+		
+		
 	}
+
 
 	/**
 	 * Hider stuns seeker disabling seekers movement for 5 seconds
 	 */
 	public void taserStun() {
-		System.out.println("before");
+		if(numStuns == 0) {
+			return;
+		}
 		if (seeker.getX() + 60 >= getX() && seeker.getX() - 60 <= getX() && seeker.getY() - 60 <= getY()
 				&& seeker.getY() + 60 >= getY()) {
-			System.out.println("after");
 			seeker.taze();
+			numStuns--;
 		}
 
 	}
