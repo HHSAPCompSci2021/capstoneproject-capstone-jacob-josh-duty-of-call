@@ -138,7 +138,7 @@ public class Hider extends Sprite {
 	 */
 	public String choosePower() {
 		
-		int i =  (int)((Math.random() * 3)+1);
+		int i =  (int)((Math.random() * 4)+1);
 	
 		if (i == 1) {
 			powerName = "speed boost";
