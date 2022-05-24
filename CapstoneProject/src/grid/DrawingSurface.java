@@ -66,9 +66,9 @@ public class DrawingSurface extends PApplet {
 	 * Loads images and instantiates hiders and seekers to be added on drawing surface in draw() method
 	 */
 	public void setup() {
+		
 		timerStart = System.currentTimeMillis();
-		hider = new Hider(loadImage("img/hider.png"), 30, 70);
-		seeker = new Seeker(loadImage("img/seeker.png"), width-60, height-70);
+		
 		title = loadImage("img/title.png");
 		playButton = loadImage("img/playbutton.png");
 		helpButton = loadImage("img/helpbutton.png");
@@ -77,6 +77,9 @@ public class DrawingSurface extends PApplet {
 		picOfHider = loadImage("img/picofhider.png");
 		playAgain = loadImage("img/playagain.png");
 		map = new Map(this);
+		seeker = new Seeker(loadImage("img/seeker.png"), width-60, height-70);
+		hider = new Hider(loadImage("img/hider.png"), 30, 70, seeker, map);
+		hider.choosePower();
 	}
 
 	/**
@@ -137,7 +140,7 @@ public class DrawingSurface extends PApplet {
 			textAlign(LEFT);
 			text("POINTS: " + hider.getScore(), width / 40, height / 28);
 			textAlign(RIGHT);
-			text("SPECIAL POWER: " , width - width / 40, height / 28);
+			text("SPECIAL POWER: " + hider.namePower(), width - width / 40, height / 28);
 			
 			if (hider.getX() >= 10 && hider.getX() <= width && hider.getY() >= 50 && hider.getY() <= height) {
 				timer = 120 - (System.currentTimeMillis() - timerStart) / 1000;

@@ -20,6 +20,7 @@ public class Seeker extends Sprite {
 	private Hider hider;
 	public double xfinal, yfinal;
 	private int dir;
+	private long timeTazed = -1;
 
 	/*
 	 * creates a seeker that extends a sprite
@@ -37,6 +38,12 @@ public class Seeker extends Sprite {
 	 * overrides the move method to show how the seeker moves
 	 */
 	public void move(int x, int y) {
+		System.out.println("current time:" + System.currentTimeMillis());
+		System.out.println("time tazed:" + timeTazed);
+		if (timeTazed>=0 && (System.currentTimeMillis() - timeTazed)<= 5000) {
+			System.out.println("in the loop");
+			return;
+		}
 		this.x+=x;
 		this.y+=y;
 		
@@ -45,6 +52,10 @@ public class Seeker extends Sprite {
 		
 	}
 
+	public void taze() {
+		timeTazed = System.currentTimeMillis();
+		System.out.println(timeTazed);
+	}
 //	public int peopleTagged(Hider other) {
 //		if (this.intersects(other)) {
 //			this.tagged += 1;
@@ -53,11 +64,11 @@ public class Seeker extends Sprite {
 //	}
 
 	public double getX() {
-		return super.getX();
+		return this.x;
 	}
 
 	public double getY() {
-		return super.getY();
+		return this.y;
 	}
 
 	public void setScore(int score) {

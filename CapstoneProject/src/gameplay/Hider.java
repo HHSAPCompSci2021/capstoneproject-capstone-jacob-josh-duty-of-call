@@ -44,15 +44,19 @@ public class Hider extends Sprite {
 
 	private PImage img;
 
-	private int lives = 1;
+	private int lives;
 	private int score;
 
 	private int dir;
+	private int numTeleports;
 
-	public Hider(PImage img, int x, int y) {
+	public Hider(PImage img, int x, int y, Seeker s, Map m) {
 		super(img, x, y, HIDER_WIDTH, HIDER_HEIGHT);
 		this.img = img;
 		lives = 1;
+		seeker = s;
+		map = m;
+		numTeleports = 1;
 		// powers = null;
 
 	}
@@ -106,36 +110,22 @@ public class Hider extends Sprite {
 
 	}
 
-//	public String assignPowers() {
-//		int i = (int)(Math.random()*3);
-//		
-//		if(power.choosePower(i) == "speed boost") {
-//			powerName = "speed boost";
-//		}
-//		else if(power.choosePower(i) == "taser stun") {
-//			powerName = "taser stun";
-//		}
-//		else if(power.choosePower(i) == "invincible") {
-//			powerName = "invincible";
-//		}
-//		return powerName;
-//	
-//	}
-
 	public void usePower() {
-		if (choosePower() == "speed boost") {
+		if (namePower() == "speed boost") {
 			speedBoost();
-		} else if (choosePower() == "taser stun") {
+		} else if (namePower() == "taser stun") {
 			taserStun();
-		} else if (choosePower() == "invincible") {
-			invincible();
+		} else if (namePower() == "invincible") {
+			reborn();
+		} else if(namePower() == "teleport") {
+			teleport();
 		}
 
 	}
 
 	public String choosePower() {
-//		int i =  (int)((Math.random() * 3)+1);
-		int i = 1;
+		
+		int i =  (int)((Math.random() * 3)+1);
 
 		if (i == 1) {
 			powerName = "speed boost";
@@ -143,9 +133,15 @@ public class Hider extends Sprite {
 		} else if (i == 2) {
 			powerName = "taser stun";
 		} else if (i == 3) {
-			powerName = "invincible";
+			powerName = "reborn";
+		} else if(i == 4) {
+			powerName = "teleport";
 		}
+		return powerName;
 
+	}
+
+	public String namePower() {
 		return powerName;
 	}
 
@@ -184,7 +180,6 @@ public class Hider extends Sprite {
 	public void setY(double y) {
 		this.y = y;
 	}
-	
 
 	public double getX() {
 		return x;
@@ -193,16 +188,14 @@ public class Hider extends Sprite {
 	public double getY() {
 		return y;
 	}
-	
+
 	public double nextX(double x) {
-		return this.x+(x*xVel);
+		return this.x + (x * xVel);
 	}
 
 	public double nextY(double y) {
-		return this.y+(y*yVel);
+		return this.y + (y * yVel);
 	}
-	
-
 
 	public void setDirection(int direction) {
 		this.dir = direction;
@@ -215,18 +208,45 @@ public class Hider extends Sprite {
 	/*
 	 * makes hider "invincible"
 	 */
-	public void invincible() {
+	public void reborn() {
 
-		new java.util.Timer().schedule(new java.util.TimerTask() {
-			@Override
-			public void run() {
-				if (isTagged(seeker)) {
-					extraLife();
-					// hider.isTagged(seeker) = false;
-				}
-			}
-		}, 5000);
+//		new java.util.Timer().schedule(new java.util.TimerTask() {
+//			@Override
+//			public void run() 
+		extraLife();
+		x = 30;
+		y = 70;
+		// hider.isTagged(seeker) = false;
 
+//			}
+//		}, 5000);
+
+	}
+	
+	public void teleport() {
+		
+		if(numTeleports==0) {
+			return;
+		}
+		
+		int tempx = (int)(Math.random()*map.getWidth());
+		int tempy = (int)(Math.random()*map.getHeight());
+		
+		
+		while(!map.isNextValid(tempx, tempy) || !(map.inBounds(tempx, tempy))) {
+			tempx = (int)(Math.random()*map.getWidth());
+			tempy = (int)(Math.random()*map.getHeight());
+		}
+		
+		x = tempx;
+		y = tempy;
+		
+		numTeleports--;
+		
+		
+		
+		
+		
 	}
 
 	/*
@@ -261,9 +281,11 @@ public class Hider extends Sprite {
 //		new java.util.Timer().schedule(new java.util.TimerTask() {
 //			@Override
 //			public void run() {
-		if (seeker.getX() + 30 <= getX() || seeker.getX() - 30 >= getX() || seeker.getY() + 30 >= getY()
-				|| seeker.getY() <= getY()) {
-			seeker.move(0, 0);
+		System.out.println("before");
+		if (seeker.getX() + 60 >= getX() && seeker.getX() - 60 <= getX() && seeker.getY() - 60 <= getY()
+				&& seeker.getY() + 60 >= getY()) {
+			System.out.println("after");
+			seeker.taze();
 		}
 //			}
 //		}, 3000);
