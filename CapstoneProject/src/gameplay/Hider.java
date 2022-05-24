@@ -73,20 +73,6 @@ public class Hider extends Sprite {
 		}
 		return false;
 
-//		if(getX() <= 1) {
-//			x+=10;
-//		}
-//		if(getX() >= map.getWidth() - 51) {
-//			y-=10;
-//		}
-//		if(getY() <= 1) {
-//			y+=10;
-//		}
-//		if(getY() >= map.getHeight() - 101) {
-//			y-=10;
-//		}
-
-		// setLocation(xBoundary, yBoundary);
 	}
 
 	/**
@@ -102,20 +88,25 @@ public class Hider extends Sprite {
 
 	}
 
+	/**
+	 * Increases velocity of hider increases move distance of hider
+	 */
 	public void accelerate(double xVel, double yVel) {
 		this.xVel += xVel;
 		this.yVel += yVel;
 
-		// move(xVel, yVel);
 
 	}
-
+	
+	/**
+	 * Checks which power is chosen and lets hider use the power chosen
+	 */
 	public void usePower() {
 		if (namePower() == "speed boost") {
 			speedBoost();
 		} else if (namePower() == "taser stun") {
 			taserStun();
-		} else if (namePower() == "invincible") {
+		} else if (namePower() == "reborn") {
 			reborn();
 		} else if(namePower() == "teleport") {
 			teleport();
@@ -123,13 +114,17 @@ public class Hider extends Sprite {
 
 	}
 
+	/**
+	 * Randomly assigns a power to the hider
+	 * @return the power of the hider 
+	 */
 	public String choosePower() {
 		
-		int i =  (int)((Math.random() * 3)+1);
+		//int i =  (int)((Math.random() * 3)+1);
+		int i = 3;
 
 		if (i == 1) {
 			powerName = "speed boost";
-			// return "speed boost
 		} else if (i == 2) {
 			powerName = "taser stun";
 		} else if (i == 3) {
@@ -141,10 +136,19 @@ public class Hider extends Sprite {
 
 	}
 
+	/**
+	 * returns the power name of the hider
+	 * @return power name of hider
+	 */
 	public String namePower() {
 		return powerName;
 	}
 
+	/**
+	 * Checks to see if hider is tagged by seeker and if so, hider loses life
+	 * @param other seeker
+	 * @return true if hider is tagged, false otherwise
+	 */
 	public boolean isTagged(Seeker other) {
 		if (this.intersects(other)) {
 			this.loseLife();
@@ -153,76 +157,122 @@ public class Hider extends Sprite {
 		return false;
 	}
 
+	/**
+	 * returns the amount of lives the hider has
+	 * @return lives of hider
+	 */
 	public int getLives() {
 		return lives;
 	}
 
+	/**
+	 * Hider loses a life
+	 */
 	public void loseLife() {
 		lives--;
 	}
 
+	/**
+	 * Hider gains a life
+	 */
 	public void extraLife() {
 		lives++;
 	}
 
+	/**
+	 * Sets score of hider
+	 * @param score of hider
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 
+	/**
+	 * Gets score of hider
+	 * @return score of hider
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * Sets x coordinate of hider
+	 * @param x coordinate of hider
+	 */
 	public void setX(double x) {
 		this.x = x;
 	}
 
+	/**
+	 * Sets y coordinate of hider
+	 * @param y coordinate of hider
+	 */
 	public void setY(double y) {
 		this.y = y;
 	}
 
+	/**
+	 * Returns x coordinate of hider
+	 * @return x coordinate of hider
+	 */
 	public double getX() {
 		return x;
 	}
 
+	/**
+	 * Returns y coordinate of hider
+	 * @return y coordinate of hider
+	 */
 	public double getY() {
 		return y;
 	}
 
+	/**
+	 * Returns the x coordinate of the next step of hider
+	 * @param x coordinate of hider
+	 * @return the next x coordinate of hider
+	 */
 	public double nextX(double x) {
 		return this.x + (x * xVel);
 	}
 
+	/**
+	 * Returns the y coordinate of the next step of hider
+	 * @param y coordinate of hider
+	 * @return the next y coordinate of hider
+	 */
 	public double nextY(double y) {
 		return this.y + (y * yVel);
 	}
 
+	/**
+	 * Sets the direction of the hider
+	 * @param direction direction of hider
+	 */
 	public void setDirection(int direction) {
 		this.dir = direction;
 	}
 
+	/**
+	 * Gets the direction of the hider
+	 * @return the direction of the hider
+	 */
 	public int getDirection() {
 		return dir;
 	}
 
-	/*
-	 * makes hider "invincible"
+	/**
+	 * Gifts hider an extra life
 	 */
 	public void reborn() {
-
-//		new java.util.Timer().schedule(new java.util.TimerTask() {
-//			@Override
-//			public void run() 
 		extraLife();
-		x = 30;
-		y = 70;
-		// hider.isTagged(seeker) = false;
-
-//			}
-//		}, 5000);
-
+		
+		
 	}
 	
+	/**
+	 * Teleports the hider to a random valid location on the map
+	 */
 	public void teleport() {
 		
 		if(numTeleports==0) {
@@ -244,18 +294,12 @@ public class Hider extends Sprite {
 		numTeleports--;
 		
 		
-		
-		
-		
 	}
 
-	/*
-	 * gives seeker faster movement speed
+	/**
+	 * Hider accelerates as movement speeds up
 	 */
 	public void speedBoost() {
-//		new java.util.Timer().schedule(new java.util.TimerTask() {
-//			@Override
-//			public void run() {
 		if (this.getDirection() == up) {
 			accelerate(0, 1.2);
 		}
@@ -269,26 +313,18 @@ public class Hider extends Sprite {
 			accelerate(1.2, 0);
 		}
 
-//			}
-//		}, 5000);
-
 	}
 
-	/*
-	 * stuns seeker
+	/**
+	 * Hider stuns seeker disabling seekers movement for 5 seconds
 	 */
 	public void taserStun() {
-//		new java.util.Timer().schedule(new java.util.TimerTask() {
-//			@Override
-//			public void run() {
 		System.out.println("before");
 		if (seeker.getX() + 60 >= getX() && seeker.getX() - 60 <= getX() && seeker.getY() - 60 <= getY()
 				&& seeker.getY() + 60 >= getY()) {
 			System.out.println("after");
 			seeker.taze();
 		}
-//			}
-//		}, 3000);
 
 	}
 
