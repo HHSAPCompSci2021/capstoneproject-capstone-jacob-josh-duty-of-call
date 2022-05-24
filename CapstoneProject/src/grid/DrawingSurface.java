@@ -8,7 +8,6 @@ import gameplay.Hider;
 import gameplay.Seeker;
 import processing.core.PApplet;
 import processing.core.PImage;
-//import processing.core.PImage;
 
 /**
  * Drawing Surface represents the surface that the drawing will be on
@@ -21,11 +20,8 @@ import processing.core.PImage;
 
 public class DrawingSurface extends PApplet {
 
-	// private Sprite sprite;
 	private Hider hider;
 	private Seeker seeker;
-	
-	private String powerName;
 
 	private boolean play;
 	private boolean start;

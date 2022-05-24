@@ -9,7 +9,6 @@
 package gameplay;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import grid.Map;
 import processing.core.PApplet;
@@ -62,7 +61,6 @@ public class Hider extends Sprite {
 		seeker = s;
 		map = m;
 		numTeleports = 1;
-		// powers = null;
 
 	}
 
